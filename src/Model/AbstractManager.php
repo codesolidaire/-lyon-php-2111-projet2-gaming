@@ -37,11 +37,8 @@ abstract class AbstractManager
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
-        if ($query) {
-            return $this->pdo->query($query)->fetchAll();
-        } else {
-            return null;
-        }
+
+        return $this->pdo->query($query)->fetchAll();
     }
 
     /**
