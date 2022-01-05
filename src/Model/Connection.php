@@ -67,8 +67,11 @@ class Connection
     /**
      * @return PDO $pdo
      */
-    public function getPdoConnection(): PDO
+    public function getPdoConnection(): ?PDO
     {
-        return $this->pdoConnection;
+        if ($this->pdoConnection) {
+            return $this->pdoConnection;
+        }
+        return null;
     }
 }
