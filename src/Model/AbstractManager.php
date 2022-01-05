@@ -39,7 +39,7 @@ abstract class AbstractManager
         }
         if ($query) {
             return $this->pdo->query($query)->fetchAll();
-        }else {
+        } else {
             return null;
         }
     }

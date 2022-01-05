@@ -20,17 +20,19 @@ class NewsManager extends AbstractManager
     public function insert(array $news): int
     {
         if ($news['category'] === 'Sword Art Online : Fatal Bullet') {
-            $game_id = 1;
+            $gameId = 1;
         } elseif ($news['category'] === 'Basic Math - Fun With Numbers') {
-            $game_id = 2;
+            $gameId = 2;
         } else {
-            $game_id = null;
+            $gameId = null;
         }
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title, category, detail, game_id, img_url_news) VALUES (:title, :category, :detail, :game_id, :img_url_news)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
+        (title, category, detail, gameId, img_url_news) VALUES
+         (:title, :category, :detail, :gameId, :img_url_news)");
         $statement->bindValue('title', $news['title'], \PDO::PARAM_STR);
         $statement->bindValue('category', $news['category'], \PDO::PARAM_STR);
         $statement->bindValue('detail', $news['detail'], \PDO::PARAM_STR);
-        $statement->bindValue('game_id', $game_id, \PDO::PARAM_INT);
+        $statement->bindValue('game_id', $gameId, \PDO::PARAM_INT);
         $statement->bindValue('img_url_news', $news['img_url_news'], \PDO::PARAM_STR);
 
         $statement->execute();
@@ -42,25 +44,27 @@ class NewsManager extends AbstractManager
     public function update(array $news): bool
     {
         if ($news['category'] === 'Sword Art Online : Fatal Bullet') {
-            $game_id = 1;
+            $gameId = 1;
         } elseif ($news['category'] === 'Basic Math - Fun With Numbers') {
-            $game_id = 2;
+            $gameId = 2;
         } else {
-            $game_id = null;
+            $gameId = null;
         }
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET title = :title, category = :category, detail = :detail, game_id = :game_id, img_url_news = :img_url_news WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET title = :title, category = :category, detail = :detail, 
+        gameId = :gameId, img_url_news = :img_url_news WHERE id=:id");
         $statement->bindValue('id', $news['id'], \PDO::PARAM_INT);
         $statement->bindValue('title', $news['title'], \PDO::PARAM_STR);
         $statement->bindValue('category', $news['category'], \PDO::PARAM_STR);
         $statement->bindValue('detail', $news['detail'], \PDO::PARAM_STR);
-        $statement->bindValue('game_id', $game_id, \PDO::PARAM_INT);
+        $statement->bindValue('gameId', $gameId, \PDO::PARAM_INT);
         $statement->bindValue('img_url_news', $news['img_url_news'], \PDO::PARAM_STR);
 
         return $statement->execute();
     }
     public function fetchCommentById(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM comments WHERE news_id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM comments WHERE newsId=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -68,9 +72,9 @@ class NewsManager extends AbstractManager
     }
     public function insertComment(array $comment)
     {
-        $statement = $this->pdo->prepare("INSERT INTO comments (comment, news_id) VALUES (:comment, :news_id)");
+        $statement = $this->pdo->prepare("INSERT INTO comments (comment, newsId) VALUES (:comment, :newsId)");
         $statement->bindValue('comment', $comment['comment'], \PDO::PARAM_STR);
-        $statement->bindValue('news_id', $comment['news_id'], \PDO::PARAM_INT);
+        $statement->bindValue('newsId', $comment['newsId'], \PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -85,7 +89,7 @@ class NewsManager extends AbstractManager
 
     public function fetchNewsByGameId(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM news WHERE game_id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM news WHERE gameId=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

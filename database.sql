@@ -59,11 +59,11 @@ CREATE TABLE `news` (
                         `title` varchar(255) NOT NULL,
                         `category` varchar(100) DEFAULT 'General',
                         `detail` text,
-                        `game_id` int DEFAULT 0,
+                        `gameId` int DEFAULT 0,
                         `createdDate` date DEFAULT (now()),
                         `img_url_news` varchar(255) DEFAULT NULL,
                         PRIMARY KEY (`id`),
-                        FOREIGN KEY (`game_id`) REFERENCES `game` (`id`) ON DELETE CASCADE
+                        FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --insert values in news table
@@ -76,9 +76,9 @@ DROP TABLE IF EXISTS `news`;
 CREATE TABLE `comments` (
                             `id` int NOT NULL AUTO_INCREMENT,
                             `comment` text NOT NULL,
-                            `news_id` int NOT NULL,
+                            `newsId` int NOT NULL,
                             PRIMARY KEY (`id`),
-                            FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE CASCADE
+                            FOREIGN KEY (`newsId`) REFERENCES `news` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --insert values in news table

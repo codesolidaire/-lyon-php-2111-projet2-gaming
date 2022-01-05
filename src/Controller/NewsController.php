@@ -114,5 +114,4 @@ class NewsController extends AbstractController
         $news = $newsManager->fetchNewsByGameId($id);
         return $this->twig->render('News/showGame.html.twig', ['game' => $game, 'news' => $news]);
     }
-
 }
