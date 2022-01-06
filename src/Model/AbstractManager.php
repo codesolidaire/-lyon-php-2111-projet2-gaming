@@ -31,7 +31,7 @@ abstract class AbstractManager
     /**
      * Get all row from database.
      */
-    public function selectAll(string $orderBy = '', string $direction = 'ASC'): ?array
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = 'SELECT * FROM ' . static::TABLE;
         if ($orderBy) {

@@ -1,6 +1,5 @@
 
 <form method="post">
-
     <input type="hidden" value="{{ news.id }}" name="id">
 
     <div class="container justify-content-around align-items-center p-3 offset-3">
@@ -12,15 +11,21 @@
         </div>
         <div class="row p-3">
             <div class="col-md-3">
-                <label for="category" class="form-label">Select Category</label>
-                {% if ( news.category ) %}
-                    <span id="selectedCategory" style="color: grey"> (Selected Category is: {{ news.category }})</span>
+                <label for="game_id" class="form-label">Select Game</label>
+                {% if (gameName.id != null) %}
+                    <span id="selectedCategory" style="color: grey"> (Selected Category is: {{ gameName.name }})</span>
+                {% endif %}
+
+                {% if (news.gameId == "")%}
+                    <span id="selectedCategory" style="color: grey"> (Selected Category is: General)</span>
                 {% endif %}
                 <!--<select for="category" class="form-select" multiple="multiple" aria-label="multiple select example" name="category[]">-->
-                <select for="category" class="form-select"  name="category">
-                    <option selected value="General">General</option>
-                    <option value="Sword Art Online : Fatal Bullet">Sword Art Online : Fatal Bullet</option>
-                    <option value="Basic Math - Fun With Numbers">Basic Math - Fun With Numbers</option>
+                <select for="category" class="form-select"  name="gameId">
+                    <option value="">General</option>
+                    {% for item in game %}
+                        <option value="{{ item.id }}">{{ item.name }}</option>
+                    {% endfor %}
+
                 </select>
             </div>
             <div class="col-md-3">

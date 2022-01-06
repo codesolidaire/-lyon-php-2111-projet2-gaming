@@ -21,11 +21,12 @@
         <h6 class="h6 display-6 p-3">{{ news.title }}</h6>
     </div>
         <div class="row">
-                {% if (news.category != 'General') %}
-                    <div class="col-md-2"><a class="btn btn-secondary" href="/news/showGame?id={{ news.game_id }}">{{ news.category}}</a></div>
-                {% else %}
-                    <div class="col-md-2 "><a class="btn btn-secondary" href="/news">{{ news.category}}</a></div>
-                {% endif %}
+            {% if (news.gameId == "") %}
+                <div class="col-md-2 "><a class="btn btn-secondary" href="/news">General</a></div>
+            {% endif %}
+            {% if (game.id != null) %}
+                    <div class="col-md-2"><a class="btn btn-secondary" href="/news/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
+            {% endif %}
         </div>
         <div class="row justify-content-around align-items-center ">
             {% if (news.img_url_news) %}
@@ -61,7 +62,7 @@
 
         <form action="/news/addComment" method="post">
             <div class="row offset-2 pt-3">
-                <input type="hidden" value="{{ news.id }}" name="news_id">
+                <input type="hidden" value="{{ news.id }}" name="newsId">
                 <div class="col-10">
                     <textarea class="form-control" name="comment"></textarea>
                 </div>
