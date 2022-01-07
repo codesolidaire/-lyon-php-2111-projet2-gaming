@@ -18,6 +18,6 @@ return [
     'news/edit' => ['NewsController', 'edit', ['id']],
     'news/show' => ['NewsController', 'show', ['id']],
     'news/delete' => ['NewsController', 'delete',],
-    'news/addComment' => ['NewsController', 'addComment'],
-    'news/showGame' => ['NewsController', 'showGame', ['id']],
+    'game/showGame' => ['GameController', 'showGame', ['id']],
+    'news/addComment' => ['CommentController', 'addComment'],
 ];

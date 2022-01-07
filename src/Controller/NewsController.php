@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\CommentManager;
+use App\Model\GameManager;
 use App\Model\NewsManager;
 
 class NewsController extends AbstractController
@@ -22,7 +24,8 @@ class NewsController extends AbstractController
     public function add(): string
     {
         $newsManager = new NewsManager();
-        $game = $newsManager->selectGame();
+        $gameManager = new GameManager();
+        $game = $gameManager->selectGame();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $news = array_map('trim', $_POST);
@@ -46,10 +49,11 @@ class NewsController extends AbstractController
     public function edit(int $id): string
     {
         $newsManager = new NewsManager();
+        $gameManager = new GameManager();
         $news = $newsManager->selectNewsById($id);
-        $game = $newsManager->selectGame();
+        $game = $gameManager->selectGame();
         if ($news['gameId'] != "") {
-            $gameName = $newsManager->selectById($news['gameId']);
+            $gameName = $gameManager->selectGameById($news['gameId']);
         } else {
             $gameName = null;
         }
@@ -75,54 +79,17 @@ class NewsController extends AbstractController
     public function show(int $id): string
     {
         $newsManager = new NewsManager();
+        $commentManager = new CommentManager();
+        $gameManger = new GameManager();
         $news = $newsManager->selectNewsById($id);
-        $comments = $newsManager->fetchCommentById($id);
+        $comments = $commentManager->fetchCommentById($id);
         if ($news['gameId'] != "") {
-            $game = $newsManager->selectById($news['gameId']);
+            $game = $gameManger->selectGameById($news['gameId']);
         } else {
             $game = null;
         }
         //$categories =  explode(",",$news['category']);
         return $this->twig->render('News/show.html.twig', ['news' => $news,
             'comments' => $comments, 'game' => $game]);
-    }
-    /**
-     * Delete a specific news
-     *
-     * public function delete()
-     * {
-     * if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     * $id = trim($_POST['id']);
-     * $newsManager = new NewsManager();
-     * $newsManager->delete((int)$id);
-     * header('Location: /news');
-     * die;
-     * }
-     * }*/
-
-    /**
-     * Display game page with related news
-     */
-    public function showGame(int $id): string
-    {
-        $newsManager = new NewsManager();
-        $game = $newsManager->selectById($id);
-        $news = $newsManager->fetchNewsByGameId($id);
-        return $this->twig->render('News/showGame.html.twig', ['game' => $game, 'news' => $news]);
-    }
-
-    /**
-     * Add a new comment for specific news
-     */
-    public function addComment(): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $comment = array_map('trim', $_POST);
-            $newsManager = new NewsManager();
-            $newsManager->insertComment($comment);
-            header("Location: /news/show?id={$comment['newsId']}");
-            die;
-        }
     }
 }

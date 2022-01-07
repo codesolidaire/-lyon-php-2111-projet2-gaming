@@ -15,16 +15,6 @@ class NewsManager extends AbstractManager
         return $news;
     }
 
-    /**
-     * select game name from game table for category
-     */
-    public function selectGame(): array
-    {
-        $query = 'SELECT id, name FROM game';
-        $statement = $this->pdo->query($query);
-        $game = $statement->fetchAll();
-        return $game;
-    }
 
     /**
      * Select news by id from news table
@@ -82,41 +72,6 @@ class NewsManager extends AbstractManager
         $statement->bindValue('img_url_news', $news['img_url_news'], \PDO::PARAM_STR);
 
         return $statement->execute();
-    }
-
-    /**
-     * Select comment by newId from comment table
-     */
-    public function fetchCommentById(int $id): array
-    {
-        $statement = $this->pdo->prepare("SELECT * FROM comments WHERE newsId=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }
-
-    /**
-     * Insert comment in table
-     */
-    public function insertComment(array $comment): void
-    {
-        $statement = $this->pdo->prepare("INSERT INTO comments (comment, newsId) VALUES (:comment, :newsId)");
-        $statement->bindValue('comment', $comment['comment'], \PDO::PARAM_STR);
-        $statement->bindValue('newsId', $comment['newsId'], \PDO::PARAM_INT);
-        $statement->execute();
-    }
-
-    /**
-     * Select game by id from game table
-     */
-    public function selectById(int $id): array
-    {
-        $statement = $this->pdo->prepare("SELECT * FROM game WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetch();
     }
 
     /**

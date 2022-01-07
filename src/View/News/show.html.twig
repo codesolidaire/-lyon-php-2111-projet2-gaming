@@ -22,10 +22,9 @@
     </div>
         <div class="row">
             {% if (news.gameId == "") %}
-                <div class="col-md-2 "><a class="btn btn-secondary" href="/news">General</a></div>
-            {% endif %}
-            {% if (game.id != null) %}
-                    <div class="col-md-2"><a class="btn btn-secondary" href="/news/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
+                <div class="col-md-2"><a class="btn btn-secondary" href="/news">General</a></div>
+            {% elseif (game.id != null) %}
+                    <div class="col-md-4"><a class="btn btn-secondary" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
             {% endif %}
         </div>
         <div class="row justify-content-around align-items-center ">
@@ -63,7 +62,7 @@
         <form action="/news/addComment" method="post">
             <div class="row offset-2 pt-3">
                 <input type="hidden" value="{{ news.id }}" name="newsId">
-                <div class="col-10">
+                <div class="col-lg-10 col-md-10 col-sm-12">
                     <textarea class="form-control" name="comment"></textarea>
                 </div>
                 <div class="col-2 pt-2">
