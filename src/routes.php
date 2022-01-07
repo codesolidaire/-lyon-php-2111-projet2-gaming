@@ -16,4 +16,11 @@ return [
     'game' => ['GameController', 'show',],
     'wildMemoryGame' => ['MemoryGameController', 'memoryGame',],
     'wildGames' => ['WildGamesController', 'wildGames',],
+    'news' => ['NewsController', 'index'],
+    'news/add' => ['NewsController', 'add'],
+    'news/edit' => ['NewsController', 'edit', ['id']],
+    'news/show' => ['NewsController', 'show', ['id']],
+    'news/delete' => ['NewsController', 'delete',],
+    'game/showGame' => ['GameController', 'showGame', ['id']],
+    'news/addComment' => ['CommentController', 'addComment'],
 ];

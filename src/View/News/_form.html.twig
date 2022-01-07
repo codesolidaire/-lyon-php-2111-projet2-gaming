@@ -1,0 +1,50 @@
+
+<form method="post">
+    <input type="hidden" value="{{ news.id }}" name="id">
+
+    <div class="container justify-content-around align-items-center p-3 offset-3">
+        <div class="row p-3">
+        <div class="col-md-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" value="{{ news.title }}" name="title">
+        </div>
+        </div>
+        <div class="row p-3">
+            <div class="col-md-3">
+                <label for="game_id" class="form-label">Select Game</label>
+                {% if (gameName.id != null) %}
+                    <span id="selectedCategory" style="color: grey"> (Selected Category is: {{ gameName.name }})</span>
+                {% endif %}
+
+                {% if (news.gameId == "")%}
+                    <span id="selectedCategory" style="color: grey"> (Selected Category is: General)</span>
+                {% endif %}
+                <!--<select for="category" class="form-select" multiple="multiple" aria-label="multiple select example" name="category[]">-->
+                <select for="category" class="form-select"  name="gameId">
+                    <option value="">General</option>
+                    {% for item in game %}
+                        <option value="{{ item.id }}">{{ item.name }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="image" class="form-label" >Illustration optionelle</label>
+                <input type="text" class="form-control" name="img_url_news" value="{{ news.img_url_news }}">
+            </div>
+        </div>
+        <div class="row p-3">
+            <div class="col-md-6">
+                <label for="detail" class="form-label">Detail</label>
+                <textarea name="detail" class="form-control">{{ news.detail }}</textarea>
+            </div>
+        </div>
+        <div class="row p-3">
+            <div class="col-12">
+                <input type="submit" value="Save" class="btn btn-primary">
+                <a href="/news" class="btn btn-outline-primary">Back</a>
+            </div>
+        </div>
+    </div>
+
+</form>
