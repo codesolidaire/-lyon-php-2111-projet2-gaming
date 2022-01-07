@@ -13,4 +13,11 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'news' => ['NewsController', 'index'],
+    'news/add' => ['NewsController', 'add'],
+    'news/edit' => ['NewsController', 'edit', ['id']],
+    'news/show' => ['NewsController', 'show', ['id']],
+    'news/delete' => ['NewsController', 'delete',],
+    'game/showGame' => ['GameController', 'showGame', ['id']],
+    'news/addComment' => ['CommentController', 'addComment'],
 ];
