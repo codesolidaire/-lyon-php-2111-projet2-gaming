@@ -4,6 +4,8 @@ namespace App\Model;
 
 class GameManager extends AbstractManager
 {
+    public const TABLE = 'game';
+
     /**
      * select game name from game table for category
      */

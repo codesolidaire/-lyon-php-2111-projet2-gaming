@@ -2,11 +2,22 @@
 
 namespace App\Controller;
 
-use App\Model\GameManager;
 use App\Model\NewsManager;
+use App\Model\GameManager;
 
 class GameController extends AbstractController
 {
+    public function game(): string
+    {
+        return $this->twig->render('Game/game.html.twig');
+    }
+
+    public function show(): string
+    {
+        $gameManager = new GameManager();
+        $game = $gameManager->SelectAll();
+        return $this->twig->render('Game/game.html.twig', ['game' => $game]);
+    }
     /**
      * Display game page with related news
      */

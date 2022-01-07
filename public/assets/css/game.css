@@ -1,0 +1,99 @@
+div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#content {
+    display: flex;
+}
+
+
+body {
+    font-family: Brutal,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    overflow-x: hidden;
+    color: rgb(245, 245, 245);
+    background: rgb(28, 28, 28);
+    position: relative;
+    margin: 100px;
+}
+
+h1 {
+    transition: color 125ms ease-in-out;
+    color: rgb(245, 245, 245);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 25px;
+    letter-spacing: -0.2px;
+}
+
+.trailer {
+    display: block;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.card-text {
+    transition: color 125ms ease-in-out;
+    color: rgb(245, 245, 245);
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.2px;
+    width: 700px;
+    margin-top: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-img-top {
+    border-radius: 5px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 40%;
+    margin-top: 60px;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.infoGame {
+    transition: color 125ms ease-in-out;
+    color: rgba(245, 245, 245, 0.6);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+}
+
+.dataGame {
+    transition: color 125ms ease-in-out;
+    color: rgb(245, 245, 245);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+}
+
+
+

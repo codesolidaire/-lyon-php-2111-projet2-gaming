@@ -60,7 +60,7 @@ CREATE TABLE `news` (
                         `category` varchar(100) DEFAULT NULL,
                         `detail` text,
                         `gameId` int DEFAULT NULL,
-                        `createdDate` datetime DEFAULT (NOW()),
+                        `createdDate` datetime DEFAULT NOW(),
                         `img_url_news` varchar(255) DEFAULT NULL,
                         `video_url_news` varchar(255) DEFAULT NULL,
                         PRIMARY KEY (`id`),
