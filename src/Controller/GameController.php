@@ -7,7 +7,6 @@ use App\Model\GameManager;
 
 class GameController extends AbstractController
 {
-
     public function game()
     {
         return $this->twig->render('Game/game.html.twig');
