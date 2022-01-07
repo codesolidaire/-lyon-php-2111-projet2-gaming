@@ -11,15 +11,7 @@ namespace App\Controller;
 
 class MemoryGameController extends AbstractController
 {
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function memoryGame()
+    public function memoryGame(): string
     {
         return $this->twig->render('wildGames/wildMemoryGame.html.twig');
     }

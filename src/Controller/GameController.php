@@ -7,7 +7,7 @@ use App\Model\GameManager;
 
 class GameController extends AbstractController
 {
-    public function game()
+    public function game(): string
     {
         return $this->twig->render('Game/game.html.twig');
     }
@@ -15,7 +15,7 @@ class GameController extends AbstractController
     public function show(): string
     {
         $gameManager = new GameManager();
-        $game = $gameManager->games();
+        $game = $gameManager->SelectAll();
         return $this->twig->render('Game/game.html.twig', ['game' => $game]);
     }
     /**
