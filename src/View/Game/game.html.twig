@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/game.css">{% endblock %}
+
+{% block title %} {{ item.name }} {% endblock %}
+{% block content %}
+
+    {% for item in game %}
+        <h1>{{ item.name }}</h1>
+        <div id="content">
+        <div class="trailer">
+            <iframe width="700" height="424" src="{{ item.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="card-text">{{ item.synopsis }}</p>
+
+            <h1>Wild Gaming News</h1>
+            <h2>Title news</h2>
+            <p>news.........</p>
+
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="{{ item.img_url_game }}" alt="Card image cap">
+            <ul class="list-group-flush">
+                <li class="list-group-item"><span class="infoGame">Genre</span> <span class="dataGame"> {{ item.genre }}</span></li>
+                <li class="list-group-item"><span class="infoGame">Mode</span> <span class="dataGame"> {{ item.mode }}</span></li>
+                <li class="list-group-item"><span class="infoGame">Date de sortie</span> <span class="dataGame"> {{ item.createDate }}</span></li>
+                <li class="list-group-item"><span class="infoGame">Editeur</span> <span class="dataGame">{{ item.editor }}</span></li>
+            </ul>
+        </div>
+        </div>
+    {% endfor  %}
+{% endblock %}
