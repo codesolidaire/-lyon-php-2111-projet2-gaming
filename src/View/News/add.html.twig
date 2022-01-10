@@ -3,21 +3,15 @@
 {% block stylesheet %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/home.css">
     <!-- Bootstrap CSS -->
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="page-header border-bottom">
-            <div class="row">
-                <div class="col-11">
-                    <h2 class="h2 display-1 text-center">WILD GAMING NEWS</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h6 class="h6 display-6 text-center">Add News</h6>
+<h1 class="header">WILD GAMING NEWS</h1>
+
+<h5 class="newsShow">Add News</h5>
     {% include 'News/_form.html.twig' %}
 
 {% endblock %}

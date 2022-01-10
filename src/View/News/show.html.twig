@@ -1,16 +1,19 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <!-- Bootstrap CSS -->
+{% endblock %}
+
 {% block content %}
-    <div class="container">
-        <div class="page-header border-bottom">
-            <div class="row">
-                <div class="col-11">
-                    <h2 class="h2 display-1 text-center">WILD GAMING NEWS</h2>
-                </div>
-            </div>
-        </div>
+
+        <h1 class="header">WILD GAMING NEWS</h1>
+
     <div class="row">
-        <h6 class="h6 display-6 p-3">{{ news.title }}</h6>
+        <h5 class="newsShow">{{ news.title }}</h5>
     </div>
         <div class="row">
             {% if (news.gameId == "") %}
@@ -25,25 +28,25 @@
                 <img src=" {{ news.img_url_news }}" height="200px" width="300px">
             </div>
                 <div class="col-lg-7 col-md-6 col-sm-11">
-                    <p>{{ news.detail }}</p>
+                    <p>{{ news.detail|raw }}</p>
                 </div>
                 {% else %}
                     <div class="col-12">
-                        <p>{{ news.detail }}</p>
+                        <p>{{ news.detail|raw }}</p>
                     </div>
             {% endif %}
 
         </div>
         <div class="row p-3">
-            <p>{{ news.detail }} {{ news.detail }}</p>
+            <p>{{ news.detail|raw }} {{ news.detail|raw }}</p>
         </div>
 
         {% if (comments) %}
-            <div class="card offset-2" style="max-width: 70%;">
+            <div class="offset-2" style="max-width: 70%;">
                 <div class="card-header">
                     User Comments
                 </div>
-                <div class="card-body">
+                <div class="comment-body">
                     {% for item in comments %}
                         <p class="card-text">{{ item.comment }}</p>
                     {% endfor %}
@@ -52,13 +55,13 @@
         {% endif %}
 
         <form action="/news/addComment" method="post">
-            <div class="row offset-2 pt-3">
+            <div class="row pt-3">
                 <input type="hidden" value="{{ news.id }}" name="newsId">
                 <div class="col-lg-10 col-md-10 col-sm-12">
                     <textarea class="form-control" name="comment"></textarea>
                 </div>
                 <div class="col-2 pt-2">
-                    <input type="submit" value="Comment" class="btn btn-primary">
+                    <input type="submit" value="Comment" class="btncomment btn-primary">
                 </div>
 
             </div>
@@ -68,7 +71,6 @@
                 <a href="/news" class="btn btn-outline-primary m-3">Back</a>
             </div>
         </div>
-    </div>
 {% endblock %}
 
 {% block javascript %}<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>{% endblock %}

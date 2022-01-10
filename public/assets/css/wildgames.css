@@ -14,6 +14,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -21,11 +22,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-h1 {
-    transition: color 125ms ease-in-out;
-    letter-spacing: -0.2px;
 }
 
 .card-title{
@@ -45,7 +41,6 @@ h1 {
  * Styles for the deck of cards
  */
 
-
 .deck {
     width: 85%;
     background: #716F71;
@@ -59,7 +54,7 @@ h1 {
     margin: 0 0 3em;
 }
 
-.deck .card {
+.deck .cart {
     height: 125px;
     width: 125px;
     margin: 0.2rem 0.2rem;
@@ -74,7 +69,7 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.open {
+.deck .cart.open {
     transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
@@ -84,11 +79,11 @@ h1 {
     animation-duration: .75s;
 }
 
-.deck .card img{
+.deck .cart img{
     visibility: hidden;
 }
 
-.deck .card.open img{
+.deck .cart.open img{
     height: 125px;
     width: 125px;
     margin: 0.2rem 0.2rem;
@@ -96,11 +91,11 @@ h1 {
     visibility: visible;
 }
 
-.deck .card.show {
+.deck .cart.show {
     font-size: 33px;
 }
 
-.deck .card.match {
+.deck .cart.match {
     cursor: default;
     background: #E5F720;
     font-size: 33px;
@@ -110,7 +105,7 @@ h1 {
     animation-duration: .75s;
 }
 
-.deck .card.match img{
+.deck .cart.match img{
     height: 125px;
     width: 125px;
     margin: 0.2rem 0.2rem;
@@ -119,14 +114,14 @@ h1 {
 
 }
 
-.deck .card.unmatched {
+.deck .cart.unmatched {
     animation-name: pulse;
     -webkit-backface-visibility: visible !important;
     backface-visibility: visible !important;
     animation-duration: .75s;
 }
 
-.deck .card.disabled {
+.deck .cart.disabled {
     pointer-events: none;
     opacity: 0.9;
 }
@@ -136,14 +131,15 @@ h1 {
  * Styles for the Score Panel
  */
 
-
+.container>section.score-panel{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .score-panel {
     text-align: left;
     margin-bottom: 10px;
 }
 
 .score-panel .stars {
-    margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
@@ -166,6 +162,18 @@ h1 {
 .timer {
     display: inline-block;
     margin: 0 1rem;
+}
+
+a.btnQuit {
+    margin: 0;
+}
+
+a.btnQuit:hover {
+    text-decoration: none;
+    color: #255784;
+    background: #f64dbd;
+    box-shadow: 0 0 10px #f64dbd, 0 0 40px #f64dbd, 0 0 10px #f64dbd;
+    border-radius: 8px;
 }
 
 
@@ -194,24 +202,27 @@ h1 {
 .popup {
     margin: 70px auto;
     padding: 20px;
-    background: #ffffff;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     border-radius: 5px;
     width: 85%;
     position: relative;
     transition: all 5s ease-in-out;
-    font-family: , sans-serif;
     color: #333;
 }
 
 .popup h2 {
     margin-top: 0;
     color: #333;
-    font-family: 'Rum Raisin', Tahoma, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a.close {
+    margin: 0;
 }
 
 .popup .close {
     position: absolute;
-    top: 20px;
+    top: 0;
     right: 30px;
     transition: all 200ms;
     font-size: 30px;
@@ -242,15 +253,21 @@ h1 {
 }
 
 #play-again {
-    background-color: #ff2698;
+    color: #fff;
+    background: #f64dbd;
+    border-radius: 8px;
     padding: 0.7rem 1rem;
-    font-size: 1.1rem;
+    font-size: 18px;
     display: block;
     margin: 0 auto;
     width: 50%;
-    font-family: 'Rum Raisin', sans-serif;
-    color: #ffffff;
-    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#play-again:hover {
+    color: #fff;
+    background: #f64dbd;
+    box-shadow: 0 0 10px #f64dbd, 0 0 40px #f64dbd, 0 0 10px #f64dbd;
 }
 
 /* animations */

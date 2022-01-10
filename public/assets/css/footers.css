@@ -253,6 +253,10 @@ a span:nth-child(4) {
     }
 }
 
+p {
+    margin-left: 10px;
+}
+
 p.about {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

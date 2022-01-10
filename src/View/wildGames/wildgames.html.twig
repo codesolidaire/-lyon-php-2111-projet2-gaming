@@ -1,37 +1,40 @@
 {% extends 'layout.html.twig' %}
 {% block link %}
 {% endblock %}
-{% block stylesheet %} {% endblock %}
+{% block stylesheet %} <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/home.css">{% endblock %}
 
 {% block title %} Wild Games {% endblock %}
 
 {% block content %}
 
 <header>
-    <h1>Wild Games</h1>
+    <h1 class="header">Wild Games</h1>
 </header>
+    <p class="header">Fun games offered by our wild developers!</p>
 
-<div class="container mt-3">
 
-    <div class="card text-center" style="width:400px; height:630px">
-        <img class="card-img-top" src="/assets/images/backCard.png" alt="Card image" style="width:100%">
-        <div class="card-body">
-            <h4 class="card-title">Wild Memory Game</h4>
-            <p class="card-text">Testez votre mémoire! <br> Faites correspondre chaque paire de cartes pour gagner la partie!</p>
-            <a href="wildMemoryGame" class="btn btn-primary">Play</a>
-        </div>
-    </div>
-
-    <div class="card text-center" style="width:400px; height:630px">
-        <img class="card-img-top" src="/assets/images/backCard.png" alt="Card image" style="width:100%">
-        <div class="card-body">
+    <div class="card-pages">
+    <div class="game card game">
+        <div class="card-home">
+        <img class="card-img-top" src="/assets/images/backCard.png" alt="Card image">
             <h4 class="card-title">Wild Math Game</h4>
             <p class="card-text">Some example text some example text. Description ....</p>
-            <a href="#" class="btn btn-primary">Play</a>
+            <a href="#" class="gamebtn">Play</a>
         </div>
     </div>
 
-</div>
+    <div class="game card game">
+        <div class="card-home">
+        <img class="card-img-top" src="/assets/images/backCard.png" alt="Card image">
+            <h4 class="card-title">Wild Memory Game</h4>
+            <p class="card-text">Test your memory! <br>
+                Match each pair of cards to win the game!</p>
+            <a href="wildMemoryGame" class="gamebtn">Play</a>
+        </div>
+    </div>
+    </div>
+
 
 {% endblock %}
 
