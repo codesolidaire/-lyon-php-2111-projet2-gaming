@@ -193,6 +193,19 @@ ul.nav.flex-column.btngame {
   color: #777;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.btnnews {
+  color: #777;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a.btnnews:hover {
+  color: #255784;
+  background: #340073;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
+  text-decoration: none;
+}
+
 .nav>li>a.btngame:hover {
   color: #255784;
   background: #340073;
@@ -201,7 +214,21 @@ ul.nav.flex-column.btngame {
 
 .nav>li>a.btngame {
   margin: 40px;
+  background: #131721;
 }
+
+a.btnnews {
+  margin: 15px 0 15px;
+  background: #131721;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+
 
 @media (max-width: 1080px) {
   .card-pages {
@@ -337,7 +364,7 @@ h6 {
 
 p.news {
   font-size: 20px;
-  color: #777777;
+  color: #919191;
   padding-left: 30px;
   margin: auto;
 }
@@ -404,6 +431,7 @@ h5.newsShow {
 
 .row.p-3>p {
   margin-left: 90px;
+  color: #919191;
 }
 
 /* form edit */
@@ -463,6 +491,7 @@ p.detail {
   margin-left: 20px;
   margin-top: 15px;
   font-size: 14px;
+  color: #919191;
 }
 
 .trailer {
@@ -522,4 +551,12 @@ p.detail {
   line-height: 20px;
   letter-spacing: 0.2px;
 }
+
+.form-control-comment {
+  margin-top: 100px;
+  margin-left: 435px;
+  width: 600px;
+  border-radius: 3px;
+}
+
 
