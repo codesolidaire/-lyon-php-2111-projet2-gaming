@@ -1,4 +1,4 @@
-let card = document.getElementsByClassName("card");
+let card = document.getElementsByClassName("cart");
 let cards = [...card];
 
 const deck = document.getElementById("card-deck");
