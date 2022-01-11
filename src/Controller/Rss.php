@@ -11,6 +11,7 @@ class Rss extends AbstractController
         $newsManager = new NewsManager();
         $news = $newsManager->select();
         header('Content-Type: application/rss+xml; charset=UTF-8');
+
         return $this->twig->render('Rss/rss.xml.twig', ['news' => $news]);
     }
 }
