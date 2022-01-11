@@ -15,5 +15,4 @@ class HomeController extends AbstractController
         $news = $newsManager->selectLimited();
         return $this->twig->render('Home/index.html.twig', ['news' => $news]);
     }
-
 }
