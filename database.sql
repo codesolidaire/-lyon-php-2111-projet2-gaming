@@ -41,7 +41,7 @@ CREATE TABLE `game` (
                         `img_url_game` varchar(200) DEFAULT NULL,
                         `video_url` varchar(300) DEFAULT NULL,
                         PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- insert values into Game table
 INSERT INTO `game` (`id`, `name`, `createDate`, `synopsis`, `editor`, `genre`, `mode`, `img_url_game`, `video_url`)
@@ -65,7 +65,7 @@ CREATE TABLE `news` (
                         `video_url_news` varchar(255) DEFAULT NULL,
                         PRIMARY KEY (`id`),
                         FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- insert values in news table
 INSERT INTO `news` (`id`,`title`, `detail`, `gameId`, `createdDate`, `img_url_news`,`video_url_news`)
@@ -80,7 +80,7 @@ CREATE TABLE `comments` (
                             `newsId` int NOT NULL,
                             PRIMARY KEY (`id`),
                             FOREIGN KEY (`newsId`) REFERENCES `news` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- insert values in news table
 INSERT INTO comments(`id`,`comment`,`newsId`)
@@ -99,7 +99,7 @@ CREATE TABLE `user` (
                         `isAdmin` bool DEFAULT false,
                         PRIMARY KEY (`id`)
 
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- insert values in user table
 INSERT INTO `user`(`firstName`, `lastName`, `userName`, `email`, `password`, `isAdmin`)
@@ -113,7 +113,7 @@ VALUES ('Admin', 'Account', 'Admin', 'adminaccount@gmail.com',
 CREATE TABLE `item` (
                         `id` int(11) UNSIGNED NOT NULL,
                         `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `item`
