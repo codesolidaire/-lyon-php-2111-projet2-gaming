@@ -168,7 +168,7 @@ a.btnQuit {
     margin: 0;
 }
 
-a.btnQuit:hover {
+a.btnQuit:hover, #play-again:hover {
     text-decoration: none;
     color: #255784;
     background: #f64dbd;
@@ -200,6 +200,7 @@ a.btnQuit:hover {
 }
 
 .popup {
+    height: 300px;
     margin: 70px auto;
     padding: 20px;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -208,6 +209,8 @@ a.btnQuit:hover {
     position: relative;
     transition: all 5s ease-in-out;
     color: #333;
+    font-family: "Teko", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
 }
 
 .popup h2 {
@@ -237,10 +240,26 @@ a.close {
 
 .popup .content-1,
 .content-2 {
-    max-height: 30%;
     overflow: auto;
     text-align: center;
-    color: #333;
+}
+
+#play-again.gamebtn {
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    color: #03e9f4;
+}
+
+.content-1 {
+    color: #0092a6;
+    font-family: 'Teko', sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#finalMove {
+    color: #0092a6;
 }
 
 .show {
@@ -252,23 +271,6 @@ a.close {
     display: inline-block;
 }
 
-#play-again {
-    color: #fff;
-    background: #f64dbd;
-    border-radius: 8px;
-    padding: 0.7rem 1rem;
-    font-size: 18px;
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-#play-again:hover {
-    color: #fff;
-    background: #f64dbd;
-    box-shadow: 0 0 10px #f64dbd, 0 0 40px #f64dbd, 0 0 10px #f64dbd;
-}
 
 /* animations */
 @keyframes flipInY {

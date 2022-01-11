@@ -1,33 +1,26 @@
-/* Change the colors
-$color1: red;
-$color2: blue;*/
+h1.neon[data-text="Welcome"], h2.neon[data-text="Wild Gamer"] {
+  user-select: none;
+}
 
 .text-effect {
   overflow: hidden;
   position: relative;
-
   /* The blend modes mute the colors, so let's bump them up */
   filter: contrast(110%) brightness(190%);
 }
 
 .neon {
   position: relative;
-
-  /* Only works on a black background, sorry */
+  /* Only works on a black background */
   background: black;
-
   /* The actual text inside the div is superfluous, only data-text matters. The text is added so you can easily edit the preview */
   color: transparent;
 }
 .neon::before,
 .neon::after {
-
     content: attr(data-text);
-
     color: white;
-
     filter: blur(0.02em);
-
     position: absolute;
     top: 0; left: 0;
     pointer-events: none;
@@ -37,8 +30,6 @@ $color2: blue;*/
     mix-blend-mode: difference;
   }
 
-
-
 .gradient,
 .spotlight {
   position: absolute;
@@ -46,7 +37,6 @@ $color2: blue;*/
   pointer-events: none;
   z-index: 10;
 }
-
 
 .gradient {
   background: linear-gradient(45deg, #ff2698, #2196f3);
@@ -107,7 +97,6 @@ h2.neon {
   --card-height: 65vh;
   --card-width: calc(var(--card-height) / 1.5);
 }
-
 
 .card {
   background: #191c29;
@@ -189,27 +178,16 @@ ul.nav.flex-column.btngame {
   margin-top: 80px;
 }
 
-.btngame {
+.btngame, .btnnews {
   color: #777;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.btnnews {
-  color: #777;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-a.btnnews:hover {
+a.btnnews:hover, .nav>li>a.btngame:hover {
   color: #255784;
   background: #340073;
   box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
   text-decoration: none;
-}
-
-.nav>li>a.btngame:hover {
-  color: #255784;
-  background: #340073;
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
 }
 
 .nav>li>a.btngame {
@@ -227,8 +205,6 @@ a.btnnews {
   align-content: center;
   text-align: center;
 }
-
-
 
 @media (max-width: 1080px) {
   .card-pages {
@@ -496,8 +472,8 @@ p.detail {
 
 .trailer {
   display: block;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 70%;
   margin-top: 60px;
@@ -558,5 +534,6 @@ p.detail {
   width: 600px;
   border-radius: 3px;
 }
+
 
 
