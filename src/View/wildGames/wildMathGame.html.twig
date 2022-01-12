@@ -59,18 +59,20 @@
             border:none;
             background: lightgray;
         }
+
         #btnSubmit, #start{
             color: aliceblue;
             background: center;
         }
         @media (min-width: 768px) {
             #game_canvas {
-                width: 500px;
+                width: 600px;
                 height: auto;
             }
             .operand, .operator{
                 width: 75%;
             }
+
         }
 
     </style>
@@ -104,11 +106,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-8" id="ans"> Answer: <input id="answer"></div>
+                    <div class="col-lg-8" id="ans"><input id="answer"></div>
                     <div class="col-lg-4" id="submit"> <button id="btnSubmit" type="button" onclick="submit_answer()">SUBMIT</button></div>
                 </div>
                 <div class="row m-3">
-                    <div class="col-12 offset-4" id="msg"><input id="message"></div>
+                    <div class="col-12 offset-4" id="msg" style="padding:20px;"><input id="message"></div>
                 </div>
 
                 <div class="row">

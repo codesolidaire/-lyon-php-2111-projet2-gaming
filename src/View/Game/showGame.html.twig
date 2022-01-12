@@ -52,9 +52,8 @@
                 <img src="{{ item.img_url_news}} " height="200px" width="300px">
             </div>
             <div class="col-lg-8">
-
                 <h5 class="h5">{{ item.title }}</h5>
-                <p>{{ item.detail [:300] ~ ' ...' }}</p>
+                <p>{{ item.detail|striptags[:300] ~ ' ...' }}</p>
             </div>
         </div>
         {% endfor %}

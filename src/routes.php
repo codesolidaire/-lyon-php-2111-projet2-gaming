@@ -26,7 +26,7 @@ return [
     'user/login' => ['UserController', 'login',],
     'user/register' => ['UserController', 'register'],
     'logout' => ['UserController', 'logout'],
-
+    'user/forgotPassword' => ['UserController', 'forgotPassword'],
     'wildMathGame' => ['MemoryGameController', 'mathGame'],
     'wildMathGame_Submit_Score' => ['GameController', 'submitMathGameScore'],
 ];

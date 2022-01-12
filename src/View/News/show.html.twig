@@ -12,6 +12,7 @@
             margin: 0px !important;
             overflow: hidden;
             word-wrap: break-word;
+            text-align: left;
         }
         #username{
             margin: 0px !important;
@@ -57,8 +58,8 @@
 
 
         {% if (comments) %}
-            <div class="offset-2 " style="max-width: 70%;">
-                <div class="card-header">
+            <div class="offset-2 " style="max-width: 70%;padding: 5px;">
+                <div class="card-header" style="border-bottom: 1px solid beige;">
                     User Comments
                 </div>
 
@@ -78,8 +79,8 @@
                 </div>
             </div>
             {% else %}
-                <div class="card offset-2" style="max-width: 70%;">
-                    <div class="card-header">
+                <div class="card-body offset-2 container" style="width: 70%;padding: 5px;">
+                    <div class="card-header header" style="border-bottom: 1px solid beige;">
                         User Comments
                     </div>
                     <div class="card-body ">
@@ -93,12 +94,12 @@
             <div class="row pt-3">
                 {% if (userName) %}
                 <input type="hidden" value="{{ news.id }}" name="newsId">
+
+
                 <div class="col-lg-1 pt-3">
-
+                   <!--<p class="text-decoration-underline text-primary"> {{ userName }}</p>-->
                 </div>
-
                 <div class="col-lg-9 col-md-9 col-sm-12">
-                    <p class="text-decoration-underline text-primary"> {{ userName }}</p>
                     <textarea class="form-control" name="comment" placeholder="Add a comment..."></textarea>
                 </div>
 

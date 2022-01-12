@@ -6,16 +6,19 @@ use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
+    private UserManager $userManager;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userManager = new UserManager();
+    }
     public function login(): string
     {
-        $userManager = new UserManager();
         $errors = '';
         $admin = false;
-        $id = false;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!empty($_POST['email']) && !empty($_POST['password'])) {
-                $user = $userManager->selectUser($_POST['email']);
-                print_r($user);
+                $user = $this->userManager->selectUser($_POST['email']);
                 if ($user != null) {
                     $_SESSION['uname'] = $user['userName'];
                     $id = $user['id'];
@@ -35,38 +38,65 @@ class UserController extends AbstractController
         }
         $_SESSION['admin'] = $admin;
 
-        return $this->twig->render('User/login.html.twig', ['errors' => $errors]);
+        return $this->twig->render('User/login.html.twig',
+            [   'errors' => $errors
+            ]);
     }
 
     public function register(): string
     {
-        $userManager = new UserManager();
         $errors = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = array();
             if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-                $email = $userManager->selectUser($_POST['email']);
+                $email = $this->userManager->selectUser($_POST['email']);
                 if ($email === null) {
                     $user['email'] = trim($_POST['email']);
                     $user['username'] = trim($_POST['username']);
                     $user['password'] = trim($_POST['password']);
                     $user['firstname'] = null;
                     $user['lastname'] = null;
-                    $userManager->insert($user);
+                    $this->userManager->insert($user);
                     header("Location: /user/login");
                 } else {
                     $errors = "The email address is already present please select another";
                 }
             } else {
-                $errors = 'Email, Username and Password are required.';
+                $errors = 'Email, DisplayName and Password are required.';
             }
         }
-        return $this->twig->render('User/register.html.twig', ['errors' => $errors]);
+        return $this->twig->render('User/register.html.twig',
+            ['errors' => $errors
+            ]);
     }
 
     public function logout()
     {
         session_destroy();
         header("Location: /user/login");
+    }
+
+    public function forgotPassword(): string
+    {
+        $errors = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = array();
+            if (!empty($_POST['email']) && !empty($_POST['password'])) {
+                $email = $this->userManager->selectUser($_POST['email']);
+                if ($email != null) {
+                    $user['email'] = trim($_POST['email']);
+                    $user['password'] = trim($_POST['password']);
+                    $this->userManager->updatePassword($user);
+                    header("Location: /user/login");
+                } else {
+                    $errors = "Please enter valid email";
+                }
+            } else {
+                $errors = 'Email and Password are required.';
+            }
+        }
+        return $this->twig->render('User/forgotPassword.html.twig',
+            ['errors' => $errors
+            ]);
     }
 }

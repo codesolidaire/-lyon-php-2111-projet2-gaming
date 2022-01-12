@@ -8,7 +8,7 @@ class GameManager extends AbstractManager
 
     public function selectGame(): array
     {
-        $query = 'SELECT id, name FROM game';
+        $query = "SELECT id, name FROM " .  self::TABLE;
         $statement = $this->pdo->query($query);
         $game = $statement->fetchAll();
         return $game;
@@ -16,7 +16,7 @@ class GameManager extends AbstractManager
 
     public function selectGameById(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM game WHERE id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/home.css">
+    <style>
+        #title, #detail {
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    </style>
     <!-- Bootstrap CSS -->
 {% endblock %}
 
@@ -14,9 +20,9 @@
     <div class="col-lg-9 col-md-11 col-sm-12">
     </div>
     {% if (isAdmin == "1") %}
-    <div class="col-lg-2 col-md-1 col-sm-1">
-        <a href="/news/add" class="btn btn-outline-primary">Add News</a>
-    </div>
+        <div class="col-lg-2 col-md-1 col-sm-1">
+            <a href="/news/add" class="btn btn-outline-primary">Add News</a>
+        </div>
     {% endif %}
     </div>
     {% for item in news %}
@@ -25,15 +31,14 @@
                 <img src=" {{ item.img_url_news }}" width="100%">
             </div>
             <div class="col-lg-7 col-md-6 col-sm-11 border">
-                <h5 class="news"><a class="link-dark" href="/news/show?id={{ item.id }}">{{ item.title }}</a></h5>
+                <h5 class="news"><a class="link-dark" id="title" href="/news/show?id={{ item.id }}">{{ item.title }}</a></h5>
                 <h6>{{ item.createdDate }}</h6>
-                <p class="news">{{ item.detail|striptags[:300] ~ ' ...' }} <a href="/news/show?id={{ item.id }}">See More</a></p>
+                <p class="news" id="detail">{{ item.detail|striptags[:300] ~ ' ...' }} <a href="/news/show?id={{ item.id }}" style="font-size: 15px;letter-spacing: 0px">See More</a></p>
             </div>
             {% if (isAdmin == "1") %}
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <!--<button type="button" class="btn btn-outline-primary m-3" ></button>-->
-                <a href="/news/edit?id={{ item.id }}" class="btn edit">Edit</a>
-            </div>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <a href="/news/edit?id={{ item.id }}" class="btn edit">Edit</a>
+                </div>
             {% endif %}
         </div>
     {% endfor  %}

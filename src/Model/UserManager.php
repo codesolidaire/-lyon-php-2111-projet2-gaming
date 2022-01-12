@@ -28,7 +28,7 @@ class UserManager extends AbstractManager
 
     public function selectUser(string $email): ?array
     {
-        $statement = $this->pdo->prepare("SELECT id, userName , password , isAdmin from user WHERE email = :email");
+        $statement = $this->pdo->prepare("SELECT id, userName , password , isAdmin from " . self::TABLE . " WHERE email = :email");
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
         $user = $statement->fetch();
@@ -44,12 +44,20 @@ class UserManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
-
         $result = $statement->fetch();
         if ($result != null) {
             return false;
         } else {
             return true;
         }
+    }
+
+    public function updatePassword(array $user): void
+    {
+        $hashedPassword = password_hash($user['password'], PASSWORD_DEFAULT, ['cost' => 15]);
+        $statement = $this->pdo->prepare("UPDATE " . static::TABLE . " SET password=:password WHERE email=:email");
+        $statement->bindValue('email', $user['email'], \PDO::PARAM_STR);
+        $statement->bindValue('password', $hashedPassword, \PDO::PARAM_STR);
+        $statement->execute();
     }
 }

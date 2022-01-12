@@ -1,8 +1,10 @@
-
+{% if(error) %}
+    <div class="row p-3">
+        <div class="col-lg-10 offset-1" style="color: red; font-size: 20px;">{{ error }}</div>
+    </div>
+{% endif %}
 <form method="post">
-    {% if(error) %}
-        {{ error }}
-    {% endif %}
+
     <input type="hidden" value="{{ news.id }}" name="id">
 
             <label for="title" class="form-title">Title</label>

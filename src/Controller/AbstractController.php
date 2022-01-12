@@ -27,8 +27,6 @@ abstract class AbstractController
         if (isset($_SESSION['uname'])) {
             $username = $_SESSION['uname'];
             $this->twig->addGlobal('userName', $username);
-            $isAdmin = $_SESSION['admin'];
-            $this->twig->addGlobal('isAdmin', $isAdmin);
         }
     }
 }
