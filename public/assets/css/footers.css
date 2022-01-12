@@ -177,6 +177,7 @@ a span{
     box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
 }
 
+/*
 a span:nth-child(1){
     top: 0;
     left: 0;
@@ -251,7 +252,7 @@ a span:nth-child(4) {
     50%, 100% {
         bottom: 100%;
     }
-}
+} */
 
 p {
     margin-left: 10px;

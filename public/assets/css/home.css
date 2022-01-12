@@ -336,6 +336,7 @@ h5.news>a.link-dark {
 h6 {
   font-size: 14px;
   padding-left: 30px;
+  color: #5ddcff;
 }
 
 p.news {
@@ -361,7 +362,7 @@ h5.newsShow {
   font-size: 35px;
   display: flex;
   text-align: center;
-  margin-left: 180px;
+  justify-content: center;
   color: #fff;
 }
 
@@ -377,7 +378,12 @@ h5.newsShow {
 .row.p-3 {
   font-size: 16px;
   margin-top: 30px;
-  margin-left: 50px;
+  margin-left: 180px;
+}
+
+.link-gamenews {
+  margin-top : 30px;
+  margin-bottom: 60px;
 }
 
 .offset-2 {
@@ -413,17 +419,18 @@ h5.newsShow {
 /* form edit */
 
 .form-title {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
 }
 
 input.form-control {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
+  width: 800px;
 }
 
 .col-md-3 {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
   padding: 0;
-  width: 600px;
+  width: 800px;
 }
 
 .rowEdit {
@@ -431,16 +438,16 @@ input.form-control {
   flex-direction: column;
 }
 
-input.form-control-img {
-  margin: 20px 0 10px 0;
-  padding: 0;
-  width: 600px;
+input.form-control-img, select.form-select {
+  margin: 20px auto 10px auto;
+  padding: 6px 12px;
+  width: 800px;
 }
 
 .form-control-detail {
   margin-top: 15px;
   /* margin-left: 435px; */
-  width: 600px;
+  width: 800px;
   height: 400px;
 }
 
@@ -448,7 +455,7 @@ input.form-control-img {
   display: flex;
   flex-direction: column;
   width: 20%;
-  margin-left: 440Px;
+  margin-left: 900Px;
 }
 
 /* show game */
@@ -535,5 +542,7 @@ p.detail {
   border-radius: 3px;
 }
 
+.col-lg-7.col-md-6.col-sm-11.border:hover {
+  background: #333333;
 
-
+}

@@ -20,13 +20,12 @@
             <div class="col-lg-4 col-md-5 col-sm-12 ">
                 <img src=" {{ item.img_url_news }}" height="300px">
             </div>
-            <div class="col-lg-7 col-md-6 col-sm-11 border">
+            <div class="col-lg-7 col-md-6 col-sm-11 border" onclick="window.location='/news/show?id={{ item.id }}'" style="cursor: pointer;">
                 <h5 class="news"><a class="link-dark" href="/news/show?id={{ item.id }}">{{ item.title }}</a></h5>
                 <h6>{{ item.createdDate }}</h6>
-                <div class="limit-text" style="  height:100px; overflow:hidden; color: #919191;">
+                    <div class="limit-text" style="  height:100px; overflow:hidden; color: #919191; padding: 20px;">
                 <p class="news">{{ item.detail|raw }}</p>
                 </div>
-                <p>...</p>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
                 <!--<button type="button" class="btn btn-outline-primary m-3" ></button>-->
