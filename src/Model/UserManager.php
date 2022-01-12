@@ -21,9 +21,8 @@ class UserManager extends AbstractManager
 
             $statement->execute();
         }
+
         return (int)$this->pdo->lastInsertId();
-
-
     }
 
     public function selectUser(string $email): ?array
