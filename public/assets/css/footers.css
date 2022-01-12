@@ -52,7 +52,7 @@
 
 .col-2 {
     flex: 0 0 auto;
-    width: 16.66666667%;
+    width: 30.66666667%;
     margin-left: 20px;
 }
 
@@ -60,7 +60,8 @@
     margin-left: 8.33333333%;
 }
 
-.col-4 {
+.col-4-footer {
+    height: 170px;
     flex: 0 0 auto;
     width: 33.33333333%;
 }
@@ -132,6 +133,7 @@ li {
 }
 
 .list-unstyled {
+    padding-top: 40px;
     padding-left: 0;
     list-style: none;
     margin-right: 40px;
@@ -144,8 +146,8 @@ h5{
 
 img.footer-logo {
     height: 200px;
-    margin-top: 50px;
-    margin-left: 80px;
+    margin-top: 0px;
+    margin-left: 100px;
 }
 
 span {
@@ -163,7 +165,7 @@ a{
     transition: 0.5s;
     letter-spacing: 4px;
     overflow: hidden;
-    margin: 40px 50px 40px 0;
+    margin: 10px 0px 10px;
 }
 
 a span{
@@ -279,7 +281,7 @@ p.about {
     position: relative;
     display: block;
     padding: 10px 15px;
-    margin: 40px 50px 40px 25px;
+    margin: 20px 50px 20px 25px;
 }
 
 @media (min-width: 768px) {
@@ -300,7 +302,8 @@ p.about {
     img.footer-logo {
         display: none;
     }
-    .row {
+    .row-footer {
+        height: 100px;
         display: flex;
         flex-direction: column;
     }
