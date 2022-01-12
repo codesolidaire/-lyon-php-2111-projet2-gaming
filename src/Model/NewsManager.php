@@ -37,7 +37,7 @@ class NewsManager extends AbstractManager
         } else {
             $news['gameId'] = intval($news['gameId']);
         }
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE ." 
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
         (title, detail, gameId, img_url_news) VALUES
          (:title, :detail, :gameId, :img_url_news)");
         $statement->bindValue('title', $news['title'], \PDO::PARAM_STR);

@@ -26,9 +26,7 @@ class GameController extends AbstractController
     {
         $game = $this->gameManager->SelectAll();
 
-        return $this->twig->render('Game/game.html.twig',
-            ['game' => $game
-            ]);
+        return $this->twig->render('Game/game.html.twig', ['game' => $game]);
     }
 
     public function submitMathGameScore(): void
@@ -45,9 +43,6 @@ class GameController extends AbstractController
         $game = $this->gameManager->selectGameById($id);
         $news = $this->newsManager->fetchNewsByGameId($id);
 
-        return $this->twig->render('Game/showGame.html.twig',
-            [   'game' => $game,
-                'news' => $news
-            ]);
+        return $this->twig->render('Game/showGame.html.twig', ['game' => $game, 'news' => $news]);
     }
 }

@@ -24,10 +24,7 @@ class NewsController extends AbstractController
     {
         $news = $this->newsManager->select();
 
-        return $this->twig->render('News/news.html.twig',
-            [   'news' => $news,
-                'isAdmin' => $_SESSION['admin']
-            ]);
+        return $this->twig->render('News/news.html.twig',['news' => $news, 'isAdmin' => $_SESSION['admin']]);
     }
 
     public function add(): string
@@ -45,10 +42,7 @@ class NewsController extends AbstractController
             }
         }
 
-        return $this->twig->render('News/add.html.twig',
-            [   'game' => $game,
-                'error' => $error
-            ]);
+        return $this->twig->render('News/add.html.twig', ['game' => $game, 'error' => $error]);
     }
 
 
@@ -75,11 +69,7 @@ class NewsController extends AbstractController
         }
 
         return $this->twig->render('News/edit.html.twig',
-            [   'news' => $news,
-                'game' => $game,
-                'gameName' => $gameName,
-                'error' => $error
-            ]);
+            ['news' => $news, 'game' => $game, 'gameName' => $gameName, 'error' => $error]);
     }
 
     public function show(int $id): string
@@ -93,9 +83,7 @@ class NewsController extends AbstractController
         }
 
         return $this->twig->render('News/show.html.twig',
-            [   'news' => $news,
-                'comments' => $comments,
-                'game' => $game
+            ['news' => $news, 'comments' => $comments, 'game' => $game
             ]);
     }
 

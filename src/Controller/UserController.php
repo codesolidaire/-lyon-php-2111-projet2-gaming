@@ -38,9 +38,7 @@ class UserController extends AbstractController
         }
         $_SESSION['admin'] = $admin;
 
-        return $this->twig->render('User/login.html.twig',
-            [   'errors' => $errors
-            ]);
+        return $this->twig->render('User/login.html.twig', ['errors' => $errors ]);
     }
 
     public function register(): string
@@ -65,9 +63,7 @@ class UserController extends AbstractController
                 $errors = 'Email, DisplayName and Password are required.';
             }
         }
-        return $this->twig->render('User/register.html.twig',
-            ['errors' => $errors
-            ]);
+        return $this->twig->render('User/register.html.twig', ['errors' => $errors]);
     }
 
     public function logout()
@@ -95,8 +91,6 @@ class UserController extends AbstractController
                 $errors = 'Email and Password are required.';
             }
         }
-        return $this->twig->render('User/forgotPassword.html.twig',
-            ['errors' => $errors
-            ]);
+        return $this->twig->render('User/forgotPassword.html.twig', ['errors' => $errors]);
     }
 }

@@ -9,7 +9,7 @@ class CommentManager extends AbstractManager
     // Insert comment in table
     public function insertComment(array $comment): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO ". self::TABLE . "(comment, newsId, userId) 
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(comment, newsId, userId) 
             VALUES (:comment, :newsId, :userId)");
         $statement->bindValue('comment', $comment['comment'], \PDO::PARAM_STR);
         $statement->bindValue('newsId', $comment['newsId'], \PDO::PARAM_INT);
