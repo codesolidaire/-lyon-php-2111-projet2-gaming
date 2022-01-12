@@ -85,4 +85,11 @@ class NewsManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function deleteNews(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM news WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

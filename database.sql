@@ -69,22 +69,16 @@ CREATE TABLE `news` (
 
 -- insert values in news table
 INSERT INTO `news` (`id`,`title`, `detail`, `gameId`, `createdDate`, `img_url_news`,`video_url_news`)
-VALUES (1, 'Special End of Year 2021 News Quiz', 'How closely did you pay attention to the events of this dramatic year?',
-        1, '2021-10-23', '/assets/images/favicon.png', null);
+VALUES (1, 'Special End of Year 2021 News Quiz', 'How closely did you pay attention to the events of this dramatic year? See what you remember by taking our special 2021 news quiz, divided into four seasons.
+Our Weekly News Quiz for Students will resume on Tuesday, Jan. 11. Look for a new Learning Network quiz every Tuesday morning during the school year.The year began with a shocking assault on American democracy, wild amateur investing on Wall Street, a trip to Mars and yet another Superbowl win for a familiar face.
+The United States began the new year far behind schedule in its coronavirus vaccine rollout, having distributed shots to a mere fraction of the 20 million people it had hoped to reach by this time, even as the nation hit a grim new milestone on New Year’s Eve: 20 million cases since the start of the pandemic.' where id = 1;
+, 1, '2021-10-23 12:10:20', '/assets/images/favicon.png', null);
 
--- comments table script
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE `comments` (
-                            `id` int NOT NULL AUTO_INCREMENT,
-                            `comment` text NOT NULL,
-                            `newsId` int NOT NULL,
-                            PRIMARY KEY (`id`),
-                            FOREIGN KEY (`newsId`) REFERENCES `news` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+INSERT INTO `news` (`id`,`title`, `detail`, `gameId`, `createdDate`, `img_url_news`,`video_url_news`)
+VALUES (2, 'Destiny 2 Players Can Potentially Lose Their Items Using Destiny Item Manager and Other Apps', 'Destiny 2 players have been relying on Destiny Item Manager and other apps for a while now, and it seems some items were lost due to API issues.Because Destiny 2 is a looter shooter, the way loot can be managed by players is important, which is why the community has been very vocal over the years about increasing vault space. Doing that would allow players to store more items and carefully select which armor pieces they want to keep and which to dismantle, as well as which weapon rolls can be good
+enough to keep for later. Still, one of the biggest boons of Destiny 2 is that it allows third-party apps to handle players inventories and vaults in a way that makes it all quite simple and straightforward.Prior to this addition, transferring gear over to alternate characters required players to travel to the Tower, place the items into the vault, log into the other character, travel to the vault once more, and pick up everything. This was incredibly time-consuming, so apps like Destiny Item Manager became extremely popular in the Destiny 2 community. For a long time, it was believed that apps like DIM simply couldnt make items disappear because of how the games API works, but recent evidence proved otherwise.',
+        2, '2022-01-11 16:51:20', '/assets/images/destiny-2-players.jpeg', 'https://www.youtube.com/embed/6cX9sP7zRhI');
 
--- insert values in news table
-INSERT INTO comments(`id`,`comment`,`newsId`)
-VALUES (1, 'What you remember by taking our special 2021 news quiz, divided into four seasons.', 1);
 
 
 -- user table script
@@ -105,6 +99,23 @@ CREATE TABLE `user` (
 INSERT INTO `user`(`firstName`, `lastName`, `userName`, `email`, `password`, `isAdmin`)
 VALUES ('Admin', 'Account', 'Admin', 'adminaccount@gmail.com',
         SHA1('Admin123456!'), true);
+
+-- comments table script
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `comment` text NOT NULL,
+                            `newsId` int NOT NULL,
+                            `userId` int NOT NULL,
+                            PRIMARY KEY (`id`),
+                            FOREIGN KEY (`newsId`) REFERENCES `news` (`id`) ON DELETE CASCADE,
+                            FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+-- insert values in news table
+INSERT INTO comments(`id`,`comment`,`newsId`)
+VALUES (1, 'What you remember by taking our special 2021 news quiz, divided into four seasons.', 1);
+
 
 
 -- Structure de la table `item`

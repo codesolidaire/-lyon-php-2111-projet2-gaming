@@ -23,4 +23,10 @@ return [
     'news/delete' => ['NewsController', 'delete',],
     'game/showGame' => ['GameController', 'showGame', ['id']],
     'news/addComment' => ['CommentController', 'addComment'],
+    'user/login' => ['UserController', 'login',],
+    'user/register' => ['UserController', 'register'],
+    'logout' => ['UserController', 'logout'],
+
+    'wildMathGame' => ['MemoryGameController', 'mathGame'],
+    'wildMathGame_Submit_Score' => ['GameController', 'submitMathGameScore'],
 ];

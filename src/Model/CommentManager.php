@@ -9,9 +9,12 @@ class CommentManager extends AbstractManager
      */
     public function insertComment(array $comment): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO comments (comment, newsId) VALUES (:comment, :newsId)");
+
+        $statement = $this->pdo->prepare("INSERT INTO comments (comment, newsId, userId) 
+            VALUES (:comment, :newsId, :userId)");
         $statement->bindValue('comment', $comment['comment'], \PDO::PARAM_STR);
         $statement->bindValue('newsId', $comment['newsId'], \PDO::PARAM_INT);
+        $statement->bindValue('userId', $comment['userId'], \PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -20,7 +23,8 @@ class CommentManager extends AbstractManager
      */
     public function fetchCommentById(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM comments WHERE newsId=:id");
+        $statement = $this->pdo->prepare("SELECT c.comment, u.userName FROM comments c
+                INNER JOIN user u ON c.userId=u.id WHERE c.newsId = :id; ");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

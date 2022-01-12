@@ -9,6 +9,9 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+//start the session
+session_start();
+
 if (getenv('ENV') === false) {
     require_once __DIR__ . '/../config/debug.php';
     require_once __DIR__ . '/../config/db.php';

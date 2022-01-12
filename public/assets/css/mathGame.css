@@ -1,0 +1,60 @@
+#game_canvas{
+    width: 85%;
+    background: #716F71;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 3em;
+}
+.operand{
+    width: 135%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    color: aliceblue;
+    height: 80px;
+    font-size: 50px;
+    background: border-box;
+}
+.operator{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    color: aliceblue;
+    height: 80px;
+    font-size: 60px;
+    background: border-box;
+}
+#op1, #op2, #operator, #ans, #msg, #submit, #score{
+    display: none;;
+}
+#message{
+    background: border-box;
+    border: none;
+    color: aliceblue;
+    background: center;
+}
+#answer{
+    border:none;
+    background: lightgray;
+}
+#btnSubmit, #start{
+    color: aliceblue;
+    background: center;
+}
+@media (min-width: 768px) {
+    #game_canvas {
+        width: 500px;
+        height: auto;
+    }
+    .operand, .operator{
+        width: 75%;
+    }
+}

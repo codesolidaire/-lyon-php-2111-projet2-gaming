@@ -8,16 +8,16 @@
 
     <title>{% block title %}{% endblock %}</title>
 
-
     {% block stylesheet %}
     {% endblock %}
     <link rel="icon" href="/assets/images/logo.png">
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="/assets/images/logo.png"></a>
+        <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" height="50px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,10 +27,10 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="news">News</a>
+                    <a class="nav-link" href="/news">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="wildGames">Wild Games</a>
+                    <a class="nav-link" href="/wildGames">Wild Games</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
@@ -40,16 +40,35 @@
                         Connexion
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Register</a></li>
-                        <li><a class="dropdown-item" href="#">Log in</a></li>
+                        <li><a class="dropdown-item" href="/user/register">Register</a></li>
+                        <li><a class="dropdown-item align-items:center" href="/user/login">
+                                Log in
+                            </a>
+                            <!--<a class="dropdown-item align-items:center" onclick="window.open('login', '_blank', 'location=yes,height=800,width=520,status=yes');">
+                                Log in
+                            </a>-->
+                            <!--<a class="dropdown-item" href="login">Log in</a>--></li>
                     </ul>
                 </li>
             </ul>
+        </div>
+        <div class="form-inline my-2 my-lg-0">
+            {% if(userName != null) %}
+                {{ userName }}
+                <a href="/logout" class="fw-bold">Logout</a>
+            {% endif %}
         </div>
     </div>
 </nav>
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
+<script>
+    function myPopup() {
+        var left = (screen.width - 520) / 2;
+        var top = (screen.height - 800) / 4;
+        var myWindow = window.open('login','_blank', 'location=yes, status=yes, scrollbars=yes, width=520, height=800, top=' + top + ', left=' + left);
+    }
+</script>
 </body>
 </html>
 

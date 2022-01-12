@@ -8,19 +8,13 @@ use App\Model\NewsManager;
 
 class NewsController extends AbstractController
 {
-    /**
-     * List news
-     */
     public function index(): string
     {
         $newsManager = new NewsManager();
         $news = $newsManager->select();
-        return $this->twig->render('News/news.html.twig', ['news' => $news]);
+        return $this->twig->render('News/news.html.twig', ['news' => $news, 'isadmin' => $_SESSION['admin']]);
     }
 
-    /**
-     * Add a new news
-     */
     public function add(): string
     {
         $newsManager = new NewsManager();
@@ -29,16 +23,9 @@ class NewsController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $news = array_map('trim', $_POST);
-            /*$news = array();
-            $category = implode(',', $_POST['category']);
-            $news['category'] = $category;
-            $news['title'] = trim($_POST['title']);
-            $news['detail'] = trim($_POST['detail']);
-            $news['img_url_news'] = trim($_POST['img_url_news']);*/
             $newsManager = new NewsManager();
             $newsManager->insert($news);
             header('Location: /news');
-            die;
         }
         return $this->twig->render('News/add.html.twig', ['game' => $game]);
     }
@@ -67,7 +54,6 @@ class NewsController extends AbstractController
             $news['img_url_news'] = trim($_POST['img_url_news']);*/
             $newsManager->update($news);
             header('Location: /news');
-            die;
         }
         return $this->twig->render('News/edit.html.twig', [
             'news' => $news, 'game' => $game, 'gameName' => $gameName]);
@@ -91,5 +77,15 @@ class NewsController extends AbstractController
         //$categories =  explode(",",$news['category']);
         return $this->twig->render('News/show.html.twig', ['news' => $news,
             'comments' => $comments, 'game' => $game]);
+    }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $newsManager = new NewsManager();
+            $newsManager->deleteNews((int)$id);
+            header('Location: /news');
+        }
     }
 }

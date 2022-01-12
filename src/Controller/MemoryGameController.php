@@ -8,4 +8,10 @@ class MemoryGameController extends AbstractController
     {
         return $this->twig->render('wildGames/wildMemoryGame.html.twig');
     }
+
+    public function mathGame(): string
+    {
+
+        return $this->twig->render('wildGames/wildMathGame.html.twig');
+    }
 }

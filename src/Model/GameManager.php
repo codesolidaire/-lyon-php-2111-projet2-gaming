@@ -28,4 +28,21 @@ class GameManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    /***
+     * Insert new score
+     */
+
+    public function insertScore(int $score): void
+    {
+
+        $statement = $this->pdo->prepare("INSERT INTO score 
+        (score) VALUES
+         (:score)");
+        $statement->bindValue('score', $score, \PDO::PARAM_INT);
+
+        $statement->execute();
+        //return (int)$this->pdo->lastInsertId();
+
+    }
 }
