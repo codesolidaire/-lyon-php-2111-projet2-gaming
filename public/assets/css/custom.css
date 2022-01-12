@@ -1,0 +1,49 @@
+body {
+    background: black;
+}
+
+.navbar-inverse {
+    height: 90px;
+}
+
+
+.navbar-brand>img {
+    height: 80px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    height: 100px;
+}
+
+.navbar-nav>li>a{
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-toggle {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.nav>li>a:visited {
+    text-decoration: none;
+}
+
+a.navbar-brand {
+    margin-top: 0px;
+    margin-bottom: auto;
+    height: 80px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+}
+
+

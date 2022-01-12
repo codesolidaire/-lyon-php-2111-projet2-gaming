@@ -129,7 +129,7 @@ function end_game(){
     clearInterval(interval);
     timer.innerHTML = "Timer : 10 secs";
 
-    window.location.replace("/wildMathGame_Submit_Score?score="+correct_ans_counter);
+    //window.location.replace("/wildMathGame_Submit_Score?score="+correct_ans_counter);
     congratulations();
     //congTime = setTimeout(congratulations, 1 * 1000);
 }
@@ -138,7 +138,7 @@ function congratulations(){
         //clearTimeout(congTime);
         clearInterval(interval);
         modal.classList.add("show");
-        //document.getElementById("finalScore").innerHTML = correct_ans_counter;
+        document.getElementById("finalScore").innerHTML = correct_ans_counter;
         closeModal();
 }
 function populate_next_question()

@@ -4,6 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/3tll3eq0iywmbdau3pq5pxg0fxyroufh3oqvh57q70fafmy4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#mytextarea',
+            plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+        });
+    </script>
+
     {% block link %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -14,49 +30,69 @@
 </head>
 
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" height="50px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/news">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/wildGames">Wild Games</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Connexion
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/user/register">Register</a></li>
-                        <li><a class="dropdown-item align-items:center" href="/user/login">
-                                Log in
-                            </a>
-                            <!--<a class="dropdown-item align-items:center" onclick="window.open('login', '_blank', 'location=yes,height=800,width=520,status=yes');">
-                                Log in
-                            </a>-->
-                            <!--<a class="dropdown-item" href="login">Log in</a>--></li>
-                    </ul>
-                </li>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/assets/images/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/" class="nav-link p-0 text-muted">Home</a></li>
+                <li><a href="/news" class="nav-link p-0 text-muted">News</a></li>
+                <li><a href="/wildGames" class="nav-link p-0 text-muted">Wild Games</a></li>
+                <li><a href="#" class="nav-link p-0 text-muted">Contact us</a></li>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if(userName != null) %}
+                <li><a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-rss" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                        </svg></a></li>
+                <li><a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-user">{{ userName }}</a></span>
+                </li>
+                <li><a href="/logout">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-log-in"></span>Logout</a>
+                </li>
+                {% else %}
+                <li><a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-rss" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                        </svg></a></li>
+                <li><a href="/user/register">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/user/login">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+            {% endif %}
         </div>
         <div class="form-inline my-2 my-lg-0">
-            {% if(userName != null) %}
-                {{ userName }}
-                <a href="/logout" class="fw-bold">Logout</a>
-            {% endif %}
+
         </div>
     </div>
 </nav>
@@ -70,6 +106,7 @@
     }
 </script>
 </body>
+{% include('footer.html.twig') %}
 </html>
 
 

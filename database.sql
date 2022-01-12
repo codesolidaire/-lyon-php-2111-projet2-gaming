@@ -107,6 +107,7 @@ CREATE TABLE `comments` (
                             `comment` text NOT NULL,
                             `newsId` int NOT NULL,
                             `userId` int NOT NULL,
+                            `createdDate` datetime DEFAULT now(),
                             PRIMARY KEY (`id`),
                             FOREIGN KEY (`newsId`) REFERENCES `news` (`id`) ON DELETE CASCADE,
                             FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE

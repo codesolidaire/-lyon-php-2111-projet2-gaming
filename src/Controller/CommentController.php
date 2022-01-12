@@ -20,7 +20,9 @@ class CommentController extends AbstractController
                 $comment = array();
                 $comment['comment'] = trim($_POST['comment']);
                 $comment['newsId'] = trim($_POST['newsId']);
-                $comment['userId'] = $_SESSION["userId"];
+                if (isset($_SESSION['userId'])){
+                    $comment['userId'] = $_SESSION['userId'];
+                }
                 $this->commentManager->insertComment($comment);
                 header("Location: /news/show?id={$comment['newsId']}");
             }

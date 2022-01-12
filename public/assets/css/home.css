@@ -1,0 +1,527 @@
+/* Change the colors
+$color1: red;
+$color2: blue;*/
+
+.text-effect {
+  overflow: hidden;
+  position: relative;
+
+  /* The blend modes mute the colors, so let's bump them up */
+  filter: contrast(110%) brightness(190%);
+}
+
+.neon {
+  position: relative;
+
+  /* Only works on a black background, sorry */
+  background: black;
+
+  /* The actual text inside the div is superfluous, only data-text matters. The text is added so you can easily edit the preview */
+  color: transparent;
+}
+.neon::before,
+.neon::after {
+
+    content: attr(data-text);
+
+    color: white;
+
+    filter: blur(0.02em);
+
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none;
+  }
+
+.neon::after {
+    mix-blend-mode: difference;
+  }
+
+
+
+.gradient,
+.spotlight {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+.gradient {
+  background: linear-gradient(45deg, #ff2698, #2196f3);
+  mix-blend-mode: multiply;
+}
+
+.spotlight {
+  animation: light 5s infinite linear;
+  background:
+          radial-gradient(circle, white, transparent 25%) 0 0 / 25% 25%,
+          radial-gradient(circle, white, black 25%) 50% 50% / 12.5% 12.5%;
+  top: -100%; left: -100%;
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+  100% {
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+
+.neon {
+  font: 700 100px 'Lato', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  justify-content: center;
+}
+.neon:focus {
+  outline: none; border: 1px dotted white;
+}
+
+.hero {
+  background: black;
+  display: flex;
+  min-height: 400px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.text-effect {
+  text-align: center;
+}
+
+h2.neon {
+  font: 700 80px 'Lato', sans-serif;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+.card {
+  background: #191c29;
+  width: 400px;
+  height: 600px;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  font-family: cursive;
+  margin-top: 100px;
+}
+
+.card-pages {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card:hover:after {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card:hover:before {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+h2.card-home {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #02b3e4;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  text-transform: uppercase;
+  border-bottom: 1px solid #dee2e6;
+  height: 40px;
+}
+
+ul.nav.flex-column.btngame {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.btngame {
+  color: #777;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.nav>li>a.btngame:hover {
+  color: #255784;
+  background: #340073;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
+}
+
+.nav>li>a.btngame {
+  margin: 40px;
+}
+
+@media (max-width: 1080px) {
+  .card-pages {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  .nav>li>a.btngame {
+    color: #255784;
+    background: #340073;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
+  }
+  ul.nav.flex-column.btngame {
+    display: flex;
+    flex-direction: column;
+  }
+  img.logomobile {
+    display: flex;
+    height: 200px;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1080px) {
+  img.logomobile {
+    display: none;
+  }
+}
+
+/* style wild games page */
+
+img.card-img-top {
+  width: 400px;
+  height: 400px;
+}
+
+.card-title{
+  color: #00bed7;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: x-large;
+  text-align: center;
+}
+
+.game.card.game {
+  background: #0b0014;
+}
+
+.card-text{
+  color: #777;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: smaller;
+  text-align: center;
+}
+
+p.card-text {
+  padding-top: 15px;
+  margin: 10px;
+  font-size: small;
+}
+
+.gamebtn {
+  padding: 10px 100px;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
+  margin:auto;
+  background: #17002a;
+}
+
+a {
+  color: #777;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a.gamebtn:hover {
+  text-decoration: none;
+  color: #255784;
+  background: #2196f3;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
+}
+
+/* title page */
+
+
+h1.header {
+  margin-top: 40px;
+  padding-bottom: 6rem;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+  font-family: 'Teko', sans-serif;
+  font-size: 10rem;
+  text-transform: uppercase;
+  animation: glow 2s ease-in-out infinite alternate;
+  text-align: center;
+  color: #34b3c1;
+  width: 100%;
+}
+
+p.header {
+  font-family: 'Teko', sans-serif;
+  text-align: center;
+  font-size: 24px;
+  color: lightsteelblue;
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #2d9da9;
+  }
+  to {
+    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+  }
+}
+
+/* news page */
+
+h5.news>a.link-dark {
+  font-size: 25px;
+  color: #fff;
+}
+
+h6 {
+  font-size: 14px;
+  padding-left: 30px;
+}
+
+p.news {
+  font-size: 20px;
+  color: #777777;
+  padding-left: 30px;
+  margin: auto;
+}
+
+.border {
+  border-left: 0.1px solid #00bed7;
+}
+
+img {
+  text-align: center;
+  margin: auto;
+  display: flex;
+}
+
+/* show news */
+
+h5.newsShow {
+  font-size: 35px;
+  display: flex;
+  text-align: center;
+  margin-left: 180px;
+  color: #fff;
+}
+
+.btn {
+  border: 1px solid #05f1f1bd;
+  border-radius: 50px;
+  margin: 0 0 80px 165px;
+}
+
+.col-lg-7.col-md-6.col-sm-11{
+  font-size: 18px;
+}
+.row.p-3 {
+  font-size: 16px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.offset-2 {
+  margin-top : 80px;
+  margin-left: 450px;
+  width: 600px;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  border-radius: 5px;
+}
+
+.form-control {
+  margin-top: 25px;
+  margin-left: 315px;
+  width: 600px;
+}
+.text-decoration-underline.text-primary{
+  text-align: center;
+}
+.btncomment {
+  border: 1px solid #05f1f1bd;
+  border-radius: 50px;
+  margin: 10px 0 80px 945px;
+  padding: 10px;
+}
+
+.btn.edit {
+  margin-left: 0;
+}
+
+.row.p-3>p {
+  margin-left: 90px;
+}
+
+/* form edit */
+
+.form-title {
+  margin: 20px 0 10px 180px;
+}
+
+input.form-control {
+  margin: 20px 0 10px 180px;
+}
+
+.col-md-3 {
+  margin: 20px 0 10px 180px;
+  padding: 0;
+  width: 600px;
+}
+
+.rowEdit {
+  display: flex;
+  flex-direction: column;
+}
+
+input.form-control-img {
+  margin: 20px 0 10px 0;
+  padding: 0;
+  width: 600px;
+}
+
+.form-control-detail {
+  margin-top: 15px;
+  /* margin-left: 435px; */
+  width: 600px;
+  height: 400px;
+}
+
+.col-12Edit {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-left: 440Px;
+}
+
+/* show game */
+
+h5.newsShow.game {
+  margin-top: 30px;
+}
+
+.h5title {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+
+p.detail {
+  margin-left: 20px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.trailer {
+  display: block;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 70%;
+  margin-top: 60px;
+}
+
+.synopsis {
+  transition: color 125ms ease-in-out;
+  color: rgb(245, 245, 245);
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+  width: 700px;
+  margin-top: 30px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-img-top.show {
+  border-radius: 5px;
+  padding-left: 40px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-group-item-game {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+}
+
+.infoGame {
+  transition: color 125ms ease-in-out;
+  color: rgba(245, 245, 245, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+
+.dataGame {
+  transition: color 125ms ease-in-out;
+  color: rgb(245, 245, 245);
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+

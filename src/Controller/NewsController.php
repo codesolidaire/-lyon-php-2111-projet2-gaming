@@ -20,14 +20,19 @@ class NewsController extends AbstractController
         $newsManager = new NewsManager();
         $gameManager = new GameManager();
         $game = $gameManager->selectGame();
+        $error = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $news = array_map('trim', $_POST);
-            $newsManager = new NewsManager();
-            $newsManager->insert($news);
-            header('Location: /news');
+            if (!empty($_POST['title']) && !empty($_POST['img_url_news']) && !empty($_POST['detail'])) {
+                $news = array_map('trim', $_POST);
+                $newsManager = new NewsManager();
+                $newsManager->insert($news);
+                header('Location: /news');
+            } else {
+                $error = "All fields are required";
+            }
         }
-        return $this->twig->render('News/add.html.twig', ['game' => $game]);
+        return $this->twig->render('News/add.html.twig', ['game' => $game, 'error' => $error]);
     }
 
     /**
@@ -39,24 +44,29 @@ class NewsController extends AbstractController
         $gameManager = new GameManager();
         $news = $newsManager->selectNewsById($id);
         $game = $gameManager->selectGame();
+        $error ='';
         if ($news['gameId'] != "") {
             $gameName = $gameManager->selectGameById($news['gameId']);
         } else {
             $gameName = null;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $news = array_map('trim', $_POST);
-            /*$category = implode(',', $_POST['category']);
-            $news['category'] = $category;
-            $news['title'] = trim($_POST['title']);
-            $news['detail'] = trim($_POST['detail']);
-            $news['img_url_news'] = trim($_POST['img_url_news']);*/
-            $newsManager->update($news);
-            header('Location: /news');
+            if (!empty($_POST['title']) && !empty($_POST['img_url_news']) && !empty($_POST['detail'])) {
+                // clean $_POST data
+                $news = array_map('trim', $_POST);
+                /*$category = implode(',', $_POST['category']);
+                $news['category'] = $category;
+                $news['title'] = trim($_POST['title']);
+                $news['detail'] = trim($_POST['detail']);
+                $news['img_url_news'] = trim($_POST['img_url_news']);*/
+                $newsManager->update($news);
+                header('Location: /news');
+            } else {
+                $error = "All fields are required";
+            }
         }
         return $this->twig->render('News/edit.html.twig', [
-            'news' => $news, 'game' => $game, 'gameName' => $gameName]);
+            'news' => $news, 'game' => $game, 'gameName' => $gameName, 'error' => $error]);
     }
 
     /**

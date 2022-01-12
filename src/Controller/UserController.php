@@ -19,7 +19,7 @@ class UserController extends AbstractController
                 if ($user != null) {
                     $_SESSION['uname'] = $user['userName'];
                     $id = $user['id'];
-                    $_SESSION["userId"] = $id;
+                    $_SESSION['userId'] = $id;
                     $admin = $user['isAdmin'];
                     if (password_verify($_POST['password'], $user['password'])) {
                         header("Location: /");

@@ -23,7 +23,7 @@ class CommentManager extends AbstractManager
      */
     public function fetchCommentById(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT c.comment, u.userName FROM comments c
+        $statement = $this->pdo->prepare("SELECT c.comment, c.createdDate, u.userName FROM comments c
                 INNER JOIN user u ON c.userId=u.id WHERE c.newsId = :id; ");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
