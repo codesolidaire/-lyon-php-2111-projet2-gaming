@@ -28,7 +28,8 @@ class UserManager extends AbstractManager
 
     public function selectUser(string $email): ?array
     {
-        $statement = $this->pdo->prepare("SELECT id, userName , password , isAdmin from " . self::TABLE . " WHERE email = :email");
+        $statement = $this->pdo->prepare("SELECT id, userName , password , isAdmin from " . self::TABLE .
+            " WHERE email = :email");
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
         $user = $statement->fetch();

@@ -68,7 +68,8 @@ class NewsController extends AbstractController
             }
         }
 
-        return $this->twig->render('News/edit.html.twig', ['news' => $news, 'game' => $game, 'gameName' => $gameName, 'error' => $error]);
+        return $this->twig->render('News/edit.html.twig', ['news' => $news, 'game' => $game,
+            'gameName' => $gameName, 'error' => $error]);
     }
 
     public function show(int $id): string
