@@ -44,7 +44,7 @@ class NewsController extends AbstractController
         $gameManager = new GameManager();
         $news = $newsManager->selectNewsById($id);
         $game = $gameManager->selectGame();
-        $error ='';
+        $error = '';
         if ($news['gameId'] != "") {
             $gameName = $gameManager->selectGameById($news['gameId']);
         } else {

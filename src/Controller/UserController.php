@@ -29,14 +29,12 @@ class UserController extends AbstractController
                 } else {
                     $errors = 'Please enter valid Username';
                 }
-
             } else {
                 $errors = 'All Fields are required.';
             }
         }
         $_SESSION['admin'] = $admin;
-        //$_SESSION["userId"] = $id;
-        //echo $_SESSION['id'] ;
+
         return $this->twig->render('User/login.html.twig', ['errors' => $errors]);
     }
 

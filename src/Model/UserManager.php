@@ -11,7 +11,8 @@ class UserManager extends AbstractManager
         if (!empty($user['password'])) {
             $password = $user['password'];
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 15]);
-            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`firstName`, `lastName`, `email`, `userName`, `password`) 
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+                " (`firstName`, `lastName`, `email`, `userName`, `password`) 
             VALUES (:firstName, :lastName, :email, :userName, :password)");
             $statement->bindValue('firstName', $user['firstname'], \PDO::PARAM_STR);
             $statement->bindValue('lastName', $user['lastname'], \PDO::PARAM_STR);

@@ -17,14 +17,15 @@ class CommentController extends AbstractController
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $comment = array();
-                $comment['comment'] = trim($_POST['comment']);
-                $comment['newsId'] = trim($_POST['newsId']);
-                if (isset($_SESSION['userId'])){
-                    $comment['userId'] = $_SESSION['userId'];
-                }
-                $this->commentManager->insertComment($comment);
-                header("Location: /news/show?id={$comment['newsId']}");
+            $comment = array();
+            $comment['comment'] = trim($_POST['comment']);
+            $comment['newsId'] = trim($_POST['newsId']);
+            if (isset($_SESSION['userId'])) {
+                $comment['userId'] = $_SESSION['userId'];
             }
+            $this->commentManager->insertComment($comment);
+
+            header("Location: /news/show?id={$comment['newsId']}");
+        }
     }
 }
