@@ -23,4 +23,5 @@ return [
     'news/delete' => ['NewsController', 'delete',],
     'game/showGame' => ['GameController', 'showGame', ['id']],
     'news/addComment' => ['CommentController', 'addComment'],
+    'contact' => ['ContactController', 'sendMail'],
 ];
