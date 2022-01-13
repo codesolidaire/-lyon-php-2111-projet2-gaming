@@ -13,13 +13,13 @@
         <title>Wild Gaming</title>
         <description>Flux RSS 2.0</description>
         <lastBuildDate>{{ item.createdDate | date("D, d M Y h:i:s O")}}</lastBuildDate>
-        <link>http://localhost:8000</link>
+        <link>http://{{ address }}</link>
         {% for oneNews in news %}
             <item>
                 <title>{{ oneNews.title }}</title>
                 <description>{{ oneNews.detail [:160] ~ ' ...'}}</description>
                 <pubDate>{{ oneNews.createdDate | date("D, d M Y h:i:s O")}}</pubDate>
-                <link>http://localhost:8000/news/show?id={{ oneNews.id }}</link>
+                <link>http://{{ address }}/news/show?id={{ oneNews.id }}</link>
             </item>
         {% endfor  %}
     </channel>
