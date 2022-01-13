@@ -396,10 +396,12 @@ h5.newsShow {
 
 .form-control {
   margin-top: 25px;
-  margin-left: 435px;
+  margin-left: 315px;
   width: 600px;
 }
-
+.text-decoration-underline.text-primary{
+  text-align: center;
+}
 .btncomment {
   border: 1px solid #05f1f1bd;
   border-radius: 50px;

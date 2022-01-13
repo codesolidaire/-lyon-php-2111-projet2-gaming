@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/home.css">
+
+    <style>
+        #comment{
+            padding: 0px !important;
+            margin: 0px !important;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-align: left;
+        }
+        #username{
+            margin: 0px !important;
+        }
+    </style>
     <!-- Bootstrap CSS -->
 {% endblock %}
 
@@ -17,52 +30,77 @@
     </div>
         <div class="row">
             {% if (news.gameId == "") %}
-                <div class="col-md-2" style="padding: 0;"><a class="btn btn-secondary" style="margin-left: 60px" href="/news">General</a></div>
-            {% elseif (game.id != null) %}
-                    <div class="col-md-4" style="padding: 0;"><a class="btn btn-secondary" style="margin-left: 60px" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
+                <div class="col-md-2"><a class="btn btn-secondary" href="/news">General</a></div>
+            {% else %}
+                    <div class="col-md-4"><a class="btn btn-secondary" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
             {% endif %}
         </div>
         <div class="row justify-content-around align-items-center ">
+                <!--<iframe width="700" height="424" src="{{ news.video_url_news }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="col-lg-7 col-md-6 col-sm-11">
+                    <p>{{ news.detail }}</p>
+                </div>-->
             {% if (news.img_url_news) %}
-            <div class="col-lg-4 col-md-5 col-sm-12 pt-3">
-                <img src=" {{ news.img_url_news }}" height="300px">
-            </div>
-                <div class="col-lg-7 col-md-6 col-sm-11" style= "color: #919191;">
-                    <p>{{ news.detail|raw }}</p>
+                <div class="col-lg-4 col-md-5 col-sm-12 pt-3">
+                    <img src=" {{ news.img_url_news }}" height="200px" width="300px">
+                </div>
+                <div class="col-lg-7 col-md-6 col-sm-11 mt-3">
+                    <p class="mt-3">{{ news.detail|raw}}</p>
                 </div>
                 {% else %}
-                    <div class="col-lg-4 col-md-5 col-sm-12 pt-3">
-                        <img src="/assets/images/logo.png" height="300px">
-                    </div>
-                    <div class="col-lg-7 col-md-6 col-sm-11" style= "color: #919191;">
-                        <p>{{ news.detail|raw }}</p>
+                    <div class="col-12">
+                        <p>{{ news.detail|raw}}</p>
+                </div>
             {% endif %}
-
         </div>
 
         {% if (comments) %}
-            <div class="offset-2">
-                <div class="card-header">
+            <div class="offset-2 " style="max-width: 70%;padding: 5px;">
+                <div class="card-header" style="border-bottom: 1px solid beige;">
                     User Comments
                 </div>
-                <div class="comment-body">
+
+                <div class="card-body container">
                     {% for item in comments %}
-                        <p class="card-text">{{ item.comment }}</p>
+                        <div class="row">
+                        <!--<div class="col-lg-2">-->
+                            <p class="text-decoration-underline text-primary" id="username">{{ item.userName }} | {{ item.createdDate }}</p>
+                        </div>
+                            <!--</div>
+                        <div class="col-lg-12">-->
+                        <div class="row">
+                        <p class="card-text" id="comment">{{ item.comment }}</p></div>
+                        <!--</div>-->
                     {% endfor %}
                 </div>
             </div>
+            {% else %}
+                <div class="card-body offset-2 container" style="max-width: 100%;padding: 5px;">
+                    <div class="card-header header" style="border-bottom: 1px solid beige;">
+                        User Comments
+                    </div>
+                    <div class="card-body ">
+                        No comments yet.
+                    </div>
+                </div>
         {% endif %}
+
 
         <form action="/news/addComment" method="post">
             <div class="row pt-3">
+                {% if (userName) %}
                 <input type="hidden" value="{{ news.id }}" name="newsId">
-                <div class="col-lg-10 col-md-10 col-sm-12">
-                    <textarea class="form-control-comment" name="comment" style="background-color: gray"></textarea>
+                <div class="col-lg-1 pt-3">
+                   <!--<p class="text-decoration-underline text-primary"> {{ userName }}</p>-->
                 </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <textarea class="form-control" name="comment" placeholder="Add a comment..." required></textarea>
+                </div>
+
                 <div class="col-2 pt-2">
                     <input type="submit" value="Comment" class="btncomment btn-primary">
                 </div>
-
+                {% endif %}
             </div>
         </form>
         <div class="row">

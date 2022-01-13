@@ -32,8 +32,15 @@
         <div class="card-home">
         <h2 class="card-home">Wild Games</h2>
         <ul class="nav flex-column btngame">
-            <li><a href="#" class="btngame">Wild Math</a></li>
-            <li><a href="wildMemoryGame" class="btngame">Wild Memory Game</a></li>
+            {% if(userName != null) %}
+                <li><a href="wildMathGame" class="btngame">Wild Math</a></li>
+                <li><a href="wildMemoryGame" class="btngame">Wild Memory Game</a></li>
+
+            {% else %}
+                <li><a href="/user/login" class="btngame">Wild Math</a></li>
+                <li><a href="/user/login" class="btngame">Wild Memory Game</a></li>
+            {% endif %}
+
         </ul>
         </div>
     </div>

@@ -13,15 +13,15 @@
 
 <h5 class="newsShow">Edit - {{ news.title }}</h5>
     {% include 'News/_form.html.twig' %}
-    <!--<div class="row px-5">
+    <div class="row px-5">
         <div class="col-12 offset-3">
             <form action="/news/delete" method="POST">
-                <input type="hidden" name="id" value=" ">
+                <input type="hidden" name="id" value="{{ news.id }}">
                 <button class="btn btn-outline-primary" onclick="return confirm('Please confirm for deletion');">Delete</button>
 
             </form>
              </div>
-    </div>-->
+    </div>
 {% endblock %}
 
 {% block javascript %}

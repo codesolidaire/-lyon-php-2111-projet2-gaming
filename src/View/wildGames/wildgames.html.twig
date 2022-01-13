@@ -19,8 +19,13 @@
         <div class="card-home">
         <img class="card-img-top" src="/assets/images/backCard.png" alt="Card image">
             <h4 class="card-title">Wild Math Game</h4>
-            <p class="card-text">Some example text some example text. Description ....</p>
-            <a href="#" class="gamebtn">Play</a>
+
+            <p class="card-text">Test Your Memory!<br> Math Calculation in 10 seconds</p>
+            {% if(userName != null) %}
+                <a href="wildMathGame" class="gamebtn">Play</a>
+            {% else %}
+                <a href="/user/login" class="gamebtn">Play</a>
+            {% endif %}
         </div>
     </div>
 
@@ -30,7 +35,12 @@
             <h4 class="card-title">Wild Memory Game</h4>
             <p class="card-text">Test your memory! <br>
                 Match each pair of cards to win the game!</p>
-            <a href="wildMemoryGame" class="gamebtn">Play</a>
+
+            {% if(userName != null) %}
+                <a href="wildMemoryGame" class="gamebtn">Play</a>
+            {% else %}
+                <a href="/user/login" class="gamebtn">Play</a>
+            {% endif %}
         </div>
     </div>
     </div>

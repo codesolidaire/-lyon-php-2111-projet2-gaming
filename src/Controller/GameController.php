@@ -7,6 +7,16 @@ use App\Model\GameManager;
 
 class GameController extends AbstractController
 {
+    private GameManager $gameManager;
+    private NewsManager $newsManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->gameManager = new GameManager();
+        $this->newsManager = new NewsManager();
+    }
+
     public function game(): string
     {
         return $this->twig->render('Game/game.html.twig');
@@ -14,19 +24,25 @@ class GameController extends AbstractController
 
     public function show(): string
     {
-        $gameManager = new GameManager();
-        $game = $gameManager->SelectAll();
+        $game = $this->gameManager->SelectAll();
+
         return $this->twig->render('Game/game.html.twig', ['game' => $game]);
     }
-    /**
-     * Display game page with related news
-     */
+
+    public function submitMathGameScore(): void
+    {
+        $score = $_GET["score"];
+        $this->gameManager->insertScore($score);
+
+        header('Location: /wildMathGame');
+    }
+
+    //Display game page with related news
     public function showGame(int $id): string
     {
-        $newsManager = new NewsManager();
-        $gameManger = new GameManager();
-        $game = $gameManger->selectGameById($id);
-        $news = $newsManager->fetchNewsByGameId($id);
+        $game = $this->gameManager->selectGameById($id);
+        $news = $this->newsManager->fetchNewsByGameId($id);
+
         return $this->twig->render('Game/showGame.html.twig', ['game' => $game, 'news' => $news]);
     }
 }

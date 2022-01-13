@@ -6,18 +6,26 @@ use App\Model\CommentManager;
 
 class CommentController extends AbstractController
 {
-    /**
-    * Add a new comment for specific news
-    */
+    private CommentManager $commentManager;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->commentManager = new CommentManager();
+    }
+
     public function addComment(): void
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $comment = array_map('trim', $_POST);
-            $commentManager = new CommentManager();
-            $commentManager->insertComment($comment);
+            $comment = array();
+            $comment['comment'] = trim($_POST['comment']);
+            $comment['newsId'] = trim($_POST['newsId']);
+            if (isset($_SESSION['userId'])) {
+                $comment['userId'] = $_SESSION['userId'];
+            }
+            $this->commentManager->insertComment($comment);
+
             header("Location: /news/show?id={$comment['newsId']}");
-            die;
         }
     }
 }

@@ -24,7 +24,6 @@
 
     <title>{% block title %}{% endblock %}</title>
 
-
     {% block stylesheet %}
     {% endblock %}
     <link rel="icon" href="/assets/images/logo.png">
@@ -47,30 +46,64 @@
                 <li><a href="/wildGames" class="nav-link p-0 text-muted">Wild Games</a></li>
                 <li><a href="#" class="nav-link p-0 text-muted">Contact us</a></li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
+                {% if(userName != null) %}
                 <li><a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-rss" viewBox="0 0 16 16">
                             <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                             <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
                         </svg></a></li>
+                <li><a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-user">{{ userName }}</a></span>
+                </li>
+                <li><a href="/logout">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-log-in"></span>Logout</a>
+                </li>
+                {% else %}
                 <li><a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-rss" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                        </svg></a></li>
+                <li><a href="/user/register">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#">
+                <li><a href="/user/login">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
+
+            {% endif %}
+        </div>
+        <div class="form-inline my-2 my-lg-0">
+
         </div>
     </div>
 </nav>
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
+<script>
+    function myPopup() {
+        var left = (screen.width - 520) / 2;
+        var top = (screen.height - 800) / 4;
+        var myWindow = window.open('login','_blank', 'location=yes, status=yes, scrollbars=yes, width=520, height=800, top=' + top + ', left=' + left);
+    }
+</script>
 </body>
 {% include('footer.html.twig') %}
 </html>

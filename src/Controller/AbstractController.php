@@ -9,7 +9,6 @@ use Twig\Loader\FilesystemLoader;
 abstract class AbstractController
 {
     protected Environment $twig;
-
     /**
      *  Initializes this class.
      */
@@ -24,5 +23,10 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
+        if (isset($_SESSION['uname'])) {
+            $username = $_SESSION['uname'];
+            $this->twig->addGlobal('userName', $username);
+        }
     }
 }
