@@ -19,7 +19,7 @@
 <div class="card-pages">
     <div class="card">
         <div class="card-home">
-        <h2 class="card-home">Last news</h2>
+        <h2 class="card-home"><a href="/news">Latest news</a></h2>
             {% for item in news %}
             <div class="nav flex-column btngame">
                 <a class="btnnews" href="/news/show?id={{ item.id }}">{{ item.title }}</a>
@@ -30,7 +30,7 @@
     </div>
     <div class="card">
         <div class="card-home">
-        <h2 class="card-home">Wild Games</h2>
+        <h2 class="card-home"><a href="/wildGames">Wild Games</a></h2>
         <ul class="nav flex-column btngame">
             {% if(userName != null) %}
                 <li><a href="wildMathGame" class="btngame">Wild Math</a></li>
