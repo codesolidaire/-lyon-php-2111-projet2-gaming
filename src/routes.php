@@ -14,6 +14,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'game' => ['GameController', 'show',],
+    'rss' => ['Rss', 'rss',],
     'wildMemoryGame' => ['MemoryGameController', 'memoryGame',],
     'wildGames' => ['WildGamesController', 'wildGames',],
     'news' => ['NewsController', 'index'],
