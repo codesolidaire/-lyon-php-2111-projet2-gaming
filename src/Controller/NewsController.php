@@ -23,8 +23,12 @@ class NewsController extends AbstractController
     public function index(): string
     {
         $news = $this->newsManager->select();
-
-        return $this->twig->render('News/news.html.twig', ['news' => $news, 'isAdmin' => $_SESSION['admin']]);
+        if (isset($_SESSION['admin'])){
+            $isAdmin = $_SESSION['admin'];
+        } else {
+            $isAdmin = false;
+        }
+        return $this->twig->render('News/news.html.twig', ['news' => $news, 'isAdmin' => $isAdmin]);
     }
 
     public function add(): string
@@ -49,7 +53,7 @@ class NewsController extends AbstractController
      // Edit a specific news
     public function edit(int $id): string
     {
-        $news = $this->newsManager->selectNewsById($id);
+        $news = $this->newsManager->selectOneById($id);
         $game = $this->gameManager->selectGame();
         $error = '';
         if ($news['gameId'] != "") {
@@ -74,7 +78,7 @@ class NewsController extends AbstractController
 
     public function show(int $id): string
     {
-        $news = $this->newsManager->selectNewsById($id);
+        $news = $this->newsManager->selectOneById($id);
         $comments = $this->commentManager->fetchCommentById($id);
         if ($news['gameId'] != "") {
             $game = $this->gameManager->selectGameById($news['gameId']);

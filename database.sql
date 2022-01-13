@@ -45,11 +45,15 @@ CREATE TABLE `game` (
 
 -- insert values into Game table
 INSERT INTO `game` (`id`, `name`, `createDate`, `synopsis`, `editor`, `genre`, `mode`, `img_url_game`, `video_url`)
-VALUES (1, 'Sword Art Online : Fatal Bullet', '2018-02-23', 'Bienvenue dans un monde armes à feu : Gun Gale Online', 'Bandai Namco Entertainment', 'RPG', 'Solo, multijoueur', '/assets/images/wildGun.png', 'https://www.youtube.com/embed/DgnlWy1lFvo');
+VALUES (1, 'General', '2018-02-23', 'General', 'General', 'RPG', 'Solo, multi Joueur', 'null', 'null');
 
 INSERT INTO `game` (`id`, `name`, `createDate`, `synopsis`, `editor`, `genre`, `mode`, `img_url_game`, `video_url`)
-VALUES (2, 'Basic Math - Fun With Numbers', '1997-09-01','The objective is to solve basic arithmetic problems.','Gary Palmer','Basic Math','Solo',
+VALUES (2, 'Sword Art Online : Fatal Bullet', '2018-02-23', 'Bienvenue dans un monde armes à feu : Gun Gale Online', 'Bandai Namco Entertainment', 'RPG', 'Solo, multijoueur', '/assets/images/wildGun.png', 'https://www.youtube.com/embed/DgnlWy1lFvo');
+
+INSERT INTO `game` (`id`, `name`, `createDate`, `synopsis`, `editor`, `genre`, `mode`, `img_url_game`, `video_url`)
+VALUES (3, 'Basic Math - Fun With Numbers', '1997-09-01','The objective is to solve basic arithmetic problems.','Gary Palmer','Basic Math','Solo',
         '/assets/images/Math_game.png', 'https://www.youtube.com/embed/PkUnwKCFTZ8');
+
 
 
 -- news table script
