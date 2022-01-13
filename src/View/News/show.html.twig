@@ -79,7 +79,7 @@
                 </div>
             </div>
             {% else %}
-                <div class="card-body offset-2 container" style="width: 70%;padding: 5px;">
+                <div class="card-body offset-2 container" style="max-width: 100%;padding: 5px;">
                     <div class="card-header header" style="border-bottom: 1px solid beige;">
                         User Comments
                     </div>
@@ -100,7 +100,7 @@
                    <!--<p class="text-decoration-underline text-primary"> {{ userName }}</p>-->
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
-                    <textarea class="form-control" name="comment" placeholder="Add a comment..."></textarea>
+                    <textarea class="form-control" name="comment" placeholder="Add a comment..." required></textarea>
                 </div>
 
                 <div class="col-2 pt-2">
