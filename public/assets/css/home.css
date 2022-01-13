@@ -1,33 +1,26 @@
-/* Change the colors
-$color1: red;
-$color2: blue;*/
+h1.neon[data-text="Welcome"], h2.neon[data-text="Wild Gamer"] {
+  user-select: none;
+}
 
 .text-effect {
   overflow: hidden;
   position: relative;
-
   /* The blend modes mute the colors, so let's bump them up */
   filter: contrast(110%) brightness(190%);
 }
 
 .neon {
   position: relative;
-
-  /* Only works on a black background, sorry */
+  /* Only works on a black background */
   background: black;
-
   /* The actual text inside the div is superfluous, only data-text matters. The text is added so you can easily edit the preview */
   color: transparent;
 }
 .neon::before,
 .neon::after {
-
     content: attr(data-text);
-
     color: white;
-
     filter: blur(0.02em);
-
     position: absolute;
     top: 0; left: 0;
     pointer-events: none;
@@ -37,8 +30,6 @@ $color2: blue;*/
     mix-blend-mode: difference;
   }
 
-
-
 .gradient,
 .spotlight {
   position: absolute;
@@ -46,7 +37,6 @@ $color2: blue;*/
   pointer-events: none;
   z-index: 10;
 }
-
 
 .gradient {
   background: linear-gradient(45deg, #ff2698, #2196f3);
@@ -107,7 +97,6 @@ h2.neon {
   --card-height: 65vh;
   --card-width: calc(var(--card-height) / 1.5);
 }
-
 
 .card {
   background: #191c29;
@@ -189,18 +178,32 @@ ul.nav.flex-column.btngame {
   margin-top: 80px;
 }
 
-.btngame {
+.btngame, .btnnews {
   color: #777;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.nav>li>a.btngame:hover {
+
+a.btnnews:hover, .nav>li>a.btngame:hover {
   color: #255784;
   background: #340073;
   box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 10px #2196f3;
+  text-decoration: none;
 }
 
 .nav>li>a.btngame {
   margin: 40px;
+  background: #131721;
+}
+
+a.btnnews {
+  margin: 15px 0 15px;
+  background: #131721;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 }
 
 @media (max-width: 1080px) {
@@ -333,11 +336,12 @@ h5.news>a.link-dark {
 h6 {
   font-size: 14px;
   padding-left: 30px;
+  color: #5ddcff;
 }
 
 p.news {
   font-size: 20px;
-  color: #777777;
+  color: #919191;
   padding-left: 30px;
   margin: auto;
 }
@@ -358,7 +362,7 @@ h5.newsShow {
   font-size: 35px;
   display: flex;
   text-align: center;
-  margin-left: 180px;
+  justify-content: center;
   color: #fff;
 }
 
@@ -374,7 +378,12 @@ h5.newsShow {
 .row.p-3 {
   font-size: 16px;
   margin-top: 30px;
-  margin-left: 50px;
+  margin-left: 180px;
+}
+
+.link-gamenews {
+  margin-top : 30px;
+  margin-bottom: 60px;
 }
 
 .offset-2 {
@@ -404,22 +413,24 @@ h5.newsShow {
 
 .row.p-3>p {
   margin-left: 90px;
+  color: #919191;
 }
 
 /* form edit */
 
 .form-title {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
 }
 
 input.form-control {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
+  width: 800px;
 }
 
 .col-md-3 {
-  margin: 20px 0 10px 180px;
+  margin: 20px auto 10px auto;
   padding: 0;
-  width: 600px;
+  width: 800px;
 }
 
 .rowEdit {
@@ -427,16 +438,16 @@ input.form-control {
   flex-direction: column;
 }
 
-input.form-control-img {
-  margin: 20px 0 10px 0;
-  padding: 0;
-  width: 600px;
+input.form-control-img, select.form-select {
+  margin: 20px auto 10px auto;
+  padding: 6px 12px;
+  width: 800px;
 }
 
 .form-control-detail {
   margin-top: 15px;
   /* margin-left: 435px; */
-  width: 600px;
+  width: 800px;
   height: 400px;
 }
 
@@ -444,7 +455,7 @@ input.form-control-img {
   display: flex;
   flex-direction: column;
   width: 20%;
-  margin-left: 440Px;
+  margin-left: 900Px;
 }
 
 /* show game */
@@ -463,12 +474,13 @@ p.detail {
   margin-left: 20px;
   margin-top: 15px;
   font-size: 14px;
+  color: #919191;
 }
 
 .trailer {
   display: block;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 70%;
   margin-top: 60px;
@@ -523,3 +535,14 @@ p.detail {
   letter-spacing: 0.2px;
 }
 
+.form-control-comment {
+  margin-top: 100px;
+  margin-left: 435px;
+  width: 600px;
+  border-radius: 3px;
+}
+
+.col-lg-7.col-md-6.col-sm-11.border:hover {
+  background: #333333;
+
+}

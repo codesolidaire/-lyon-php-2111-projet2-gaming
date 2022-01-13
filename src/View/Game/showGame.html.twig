@@ -10,15 +10,15 @@
 {% block content %}
 
         <div class="row">
-            <h5 class="newsShow game">{{ game.name }}</h5>
+            <h5 class="newsShow game" style="margin-left: 180px;">{{ game.name }}</h5>
         </div>
     <div class="row justify-content-around align-items-center p-3">
                 <div class="trailer">
                     <iframe width="700" height="424" src="{{ game.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p class="synopsis">{{ game.synopsis }}</p>
 
-                    <div class="row p-3">
-                        <a href="/news">WILD GAMING NEWS</a>
+                    <div class="link-gamenews">
+                    <a href="/news">WILD GAMING NEWS</a>
                     </div>
 
                     {% for item in news %}
@@ -29,7 +29,7 @@
                         <div class="col-lg-8">
 
                             <h5 class="h5title">{{ item.title }}</h5>
-                            <p class="detail">{{ item.detail|raw }}</p>
+                            <div class="detail" style="margin-left: 10px; color: #919191">{{ item.detail|raw }}</div>
                         </div>
                     </div>
                 </div>

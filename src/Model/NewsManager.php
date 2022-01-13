@@ -15,6 +15,17 @@ class NewsManager extends AbstractManager
         return $news;
     }
 
+    /**
+     * Get all row from database dans display a limited result.
+     */
+    public function selectLimited(): array
+    {
+        $query = 'SELECT * FROM news  ORDER BY createdDate DESC LIMIT 3 ';
+        $statement = $this->pdo->query($query);
+        $news = $statement->fetchAll();
+        return $news;
+    }
+
 
     /**
      * Select news by id from news table

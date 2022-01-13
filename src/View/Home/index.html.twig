@@ -1,22 +1,31 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/home.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <div class="hero">
     <div class="text-effect">
-        <h1 class="neon" data-text="Welcome" contenteditable>Welcome</h1>
-        <h2 class="neon" data-text="Wild Gamer" contenteditable>Wild Gamer</h2>
+        <h1 class="neon" data-text="Welcome">Welcome</h1>
+        <h2 class="neon" data-text="Wild Gamer">Wild Gamer</h2>
         <div class="gradient"></div>
         <div class="spotlight"></div>
     </div>
 </div>
+    <p class="header">Wild Gaming,
+        News, entertainment, a community
+        and fun!</p>
     <div><img class="logomobile" src="/assets/images/logo.png"></div>
 
 <div class="card-pages">
     <div class="card">
         <div class="card-home">
         <h2 class="card-home">Last news</h2>
+            {% for item in news %}
+            <div class="nav flex-column btngame">
+                <a class="btnnews" href="/news/show?id={{ item.id }}">{{ item.title }}</a>
+            </div>
+            {% endfor %}
+            <a href="news" class="gamebtn">More</a>
         </div>
     </div>
     <div class="card">

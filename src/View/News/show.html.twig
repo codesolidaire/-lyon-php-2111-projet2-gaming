@@ -13,36 +13,35 @@
         <h1 class="header">WILD GAMING NEWS</h1>
 
     <div class="row">
-        <h5 class="newsShow">{{ news.title }}</h5>
+        <h5 class="newsShow" style="margin-left: 60px;">{{ news.title }}</h5>
     </div>
         <div class="row">
             {% if (news.gameId == "") %}
-                <div class="col-md-2"><a class="btn btn-secondary" href="/news">General</a></div>
+                <div class="col-md-2" style="padding: 0;"><a class="btn btn-secondary" style="margin-left: 60px" href="/news">General</a></div>
             {% elseif (game.id != null) %}
-                    <div class="col-md-4"><a class="btn btn-secondary" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
+                    <div class="col-md-4" style="padding: 0;"><a class="btn btn-secondary" style="margin-left: 60px" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>
             {% endif %}
         </div>
         <div class="row justify-content-around align-items-center ">
             {% if (news.img_url_news) %}
             <div class="col-lg-4 col-md-5 col-sm-12 pt-3">
-                <img src=" {{ news.img_url_news }}" height="200px" width="300px">
+                <img src=" {{ news.img_url_news }}" height="300px">
             </div>
-                <div class="col-lg-7 col-md-6 col-sm-11">
+                <div class="col-lg-7 col-md-6 col-sm-11" style= "color: #919191;">
                     <p>{{ news.detail|raw }}</p>
                 </div>
                 {% else %}
-                    <div class="col-12">
-                        <p>{{ news.detail|raw }}</p>
+                    <div class="col-lg-4 col-md-5 col-sm-12 pt-3">
+                        <img src="/assets/images/logo.png" height="300px">
                     </div>
+                    <div class="col-lg-7 col-md-6 col-sm-11" style= "color: #919191;">
+                        <p>{{ news.detail|raw }}</p>
             {% endif %}
 
         </div>
-        <div class="row p-3">
-            <p>{{ news.detail|raw }} {{ news.detail|raw }}</p>
-        </div>
 
         {% if (comments) %}
-            <div class="offset-2" style="max-width: 70%;">
+            <div class="offset-2">
                 <div class="card-header">
                     User Comments
                 </div>
@@ -58,7 +57,7 @@
             <div class="row pt-3">
                 <input type="hidden" value="{{ news.id }}" name="newsId">
                 <div class="col-lg-10 col-md-10 col-sm-12">
-                    <textarea class="form-control" name="comment"></textarea>
+                    <textarea class="form-control-comment" name="comment" style="background-color: gray"></textarea>
                 </div>
                 <div class="col-2 pt-2">
                     <input type="submit" value="Comment" class="btncomment btn-primary">
