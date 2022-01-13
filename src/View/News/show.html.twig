@@ -22,14 +22,13 @@
 {% endblock %}
 
 {% block content %}
-
         <h1 class="header">WILD GAMING NEWS</h1>
 
     <div class="row">
         <h5 class="newsShow" style="margin-left: 60px;">{{ news.title }}</h5>
     </div>
         <div class="row">
-            {% if (news.gameId == "") %}
+            {% if (news.gameId == 1) %}
                 <div class="col-md-2"><a class="btn btn-secondary" href="/news">General</a></div>
             {% else %}
                     <div class="col-md-4"><a class="btn btn-secondary" href="/game/showGame?id={{ news.gameId }}">{{ game.name }}</a></div>

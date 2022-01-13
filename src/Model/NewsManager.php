@@ -27,19 +27,6 @@ class NewsManager extends AbstractManager
     }
 
 
-    /**
-     * Select news by id from news table
-     */
-    public function selectNewsById(int $id): array
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetch();
-    }
-
     //Insert new item into news table
     public function insert(array $news): int
     {
@@ -64,11 +51,12 @@ class NewsManager extends AbstractManager
     //Update news in database
     public function update(array $news): bool
     {
-        if (empty($news['gameId'])) {
-            $news['gameId'] = null;
+        /*if (empty($news['gameId'])) {
+            $news['gameId'] = 0;
         } else {
             $news['gameId'] = intval($news['gameId']);
-        }
+        }*/
+        $news['gameId'] = intval($news['gameId']);
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
             " SET title = :title, detail = :detail, gameId = :gameId, img_url_news = :img_url_news 
             WHERE id=:id");
