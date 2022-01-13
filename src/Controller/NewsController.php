@@ -23,7 +23,7 @@ class NewsController extends AbstractController
     public function index(): string
     {
         $news = $this->newsManager->select();
-        if (isset($_SESSION['admin'])){
+        if (isset($_SESSION['admin'])) {
             $isAdmin = $_SESSION['admin'];
         } else {
             $isAdmin = false;
