@@ -26,7 +26,7 @@
         <h1 class="header">WILD GAMING NEWS</h1>
 
     <div class="row">
-        <h5 class="newsShow">{{ news.title }}</h5>
+        <h5 class="newsShow" style="margin-left: 60px;">{{ news.title }}</h5>
     </div>
         <div class="row">
             {% if (news.gameId == "") %}
@@ -51,11 +51,8 @@
                     <div class="col-12">
                         <p>{{ news.detail|raw}}</p>
                 </div>
-
             {% endif %}
-
         </div>
-
 
         {% if (comments) %}
             <div class="offset-2 " style="max-width: 70%;padding: 5px;">
@@ -75,7 +72,6 @@
                         <p class="card-text" id="comment">{{ item.comment }}</p></div>
                         <!--</div>-->
                     {% endfor %}
-
                 </div>
             </div>
             {% else %}
@@ -94,8 +90,6 @@
             <div class="row pt-3">
                 {% if (userName) %}
                 <input type="hidden" value="{{ news.id }}" name="newsId">
-
-
                 <div class="col-lg-1 pt-3">
                    <!--<p class="text-decoration-underline text-primary"> {{ userName }}</p>-->
                 </div>

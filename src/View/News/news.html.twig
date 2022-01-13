@@ -28,12 +28,13 @@
     {% for item in news %}
         <div class="row justify-content-around align-items-center p-3">
             <div class="col-lg-4 col-md-5 col-sm-12 ">
-                <img src=" {{ item.img_url_news }}" width="100%">
+                <img src=" {{ item.img_url_news }}" height="300px">
             </div>
             <div class="col-lg-7 col-md-6 col-sm-11 border">
                 <h5 class="news"><a class="link-dark" id="title" href="/news/show?id={{ item.id }}">{{ item.title }}</a></h5>
                 <h6>{{ item.createdDate }}</h6>
                 <p class="news" id="detail">{{ item.detail|striptags[:300] ~ ' ...' }} <a href="/news/show?id={{ item.id }}" style="font-size: 15px;letter-spacing: 0px">See More</a></p>
+
             </div>
             {% if (isAdmin == "1") %}
                 <div class="col-lg-1 col-md-1 col-sm-1">
