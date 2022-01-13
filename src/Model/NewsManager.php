@@ -30,11 +30,12 @@ class NewsManager extends AbstractManager
     //Insert new item into news table
     public function insert(array $news): int
     {
-        if (empty($news['gameId'])) {
+       /* if (empty($news['gameId'])) {
             $news['gameId'] = null;
         } else {
             $news['gameId'] = intval($news['gameId']);
-        }
+        }*/
+        $news['gameId'] = intval($news['gameId']);
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
         (title, detail, gameId, img_url_news) VALUES
          (:title, :detail, :gameId, :img_url_news)");
