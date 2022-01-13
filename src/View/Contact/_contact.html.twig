@@ -12,14 +12,19 @@
     <h1 class="header">Contact Us</h1>
     <div class="contact">
 <form action="" method="POST">
+    {% if errors %}
+    <div style="color: red">
+    {{ errors }}
+    </div>
+    {% endif %}
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="{{ name }}">
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" value=" {{ email }}">
     <label for="subject">Subject:</label>
-    <input type="text" name="subject" id="subject">
+    <input type="text" name="subject" id="subject" value="{{ subject }}">
     <label for="message">Message</label>
-    <textarea name="message" cols="30" rows="10"></textarea>
+    <textarea name="message" cols="30" rows="10">{{ message }}</textarea>
     <input type="submit" name="Send" value="Send">
 </form>
     </div>
